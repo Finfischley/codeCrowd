@@ -3,27 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies" : {
-    "express" : "~4.0.0",           
-    "ejs" : "~0.8.5",  
-    "mysql2": "^1.3.6",
-    "sequelize": "^4.3.1",             
-              
-    "passport" : "~0.1.17",         
-    "passport-local" : "~0.1.6",    
-    "connect-flash" : "~0.1.1",     
-    "bcrypt-nodejs" : "latest",
-
-    "morgan": "~1.0.0",
-    "body-parser": "~1.0.0",
-    "cookie-parser": "~1.0.0",
-    "method-override": "~1.0.0",
-    "express-session": "~1.0.0" 
-  }    
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Finfischley/codeCrowd.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Finfischley/codeCrowd/issues"
+  },
+  "homepage": "https://github.com/Finfischley/codeCrowd#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mysql2": "^1.4.0",
+    "sequelize": "^4.4.2"
+  }
 }
