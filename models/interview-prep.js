@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes){
 		state: {
 			type: DataTypes.STRING,
 			allowNull: false
-		}
+		},
 		position: {
 			type: DataTypes.STRING,
 			allowNull: false
