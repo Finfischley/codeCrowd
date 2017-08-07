@@ -6,7 +6,7 @@ var db = require("../models");
 module.exports = function(app){
 
 	// READ user information to check if they can log in
-	app.get("/:username/:password", function(readReq, readRes){
+	app.get("/api/user/:username/:password", function(readReq, readRes){
 
 		// console.log(readReq.params.username);
 		db.User.findAll({
@@ -21,17 +21,17 @@ module.exports = function(app){
 			}
 			var password = results[0].password;
 
-			if (readReq.params.password === password){
-				readRes.send("you are logged in");
-				loggedIn = true;
-				// console.log(loggedIn);
+			if (readReq.params.password !== password){
+				readRes.send("wrong password");
+			
+				// console.log("logged in" + loggedIn);
 				return;
 			}
 
-			readRes.send("wrong password");
+			readRes.send("you are logged in");
 
-		})
-	})
+		});
+	});
 
 	// CREATE new user
 	app.post("/newuser", function(createReq, createRes){
