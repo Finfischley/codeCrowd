@@ -1,34 +1,29 @@
-// Dependencies
-// =============================================================
 var path = require("path");
 
-// Routes
-// =============================================================
-module.exports = function(app) {
-  // index route loads view.html
-  app.post("/login", 
-    passport.authenticate("local", { successRedirect: '/',
-                                     failureRedirect: '/login',
-                                     failureFlash: true})
-    );
+module.exports = function(app){
 
-  function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
+	// Home page
+	app.get("/", function(req, res){
+		res.sendFile(path.join(__dirname, "../public/views/index.html"));
+	});
 
-  // cms route loads cms.html
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
-  });
+	// Code Hive Team page
+	app.get("/team", function(req, res){
+		res.sendFile(path.join(__dirname, "../public/views/teampage.html"));
+	});
 
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
+	// Study-guide posts
+	app.get("/study-guide", function(req, res){
+		res.sendFile(path.join(__dirname, "../public/views/study-guide.html"));
+	});
 
-  // authors route loads author-manager.html
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
+	// Interview-prep posts
+	app.get("/interview-prep", function(req, res){
+		res.sendFile(path.join(__dirname, "../public/views/interview-prep.html"));
+	});
 
-};
+	// dashboard
+	app.get("/dashboard", function(req, res){
+		res.sendFile(path.join(__dirname, "../public/views/dashboard.html"));
+	});
+}
