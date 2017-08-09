@@ -25,7 +25,7 @@ $(document).ready(function(){
 		$(".navbar-nav").append(loggedOutLink);
 	}
 
-	// ---------- LOGIN/SIGNUP MODAL WINDOW ---------- //
+	// ---------- MODAL WINDOW ---------- //
 	var modal = $("#user-modal");
 
     $("#loggedOutLink").on('click', function(){
@@ -70,29 +70,7 @@ $(document).ready(function(){
     	$("#signup-content").hide();
     });
 
-    // ---------- POST MODAL WINDOW ---------- //
-    var postModal = $("#post-modal");
-
-    postModal.hide();
-
-    $("#viewpost-btn").on('click', function(){
-        // show the whole modal window
-        $(postModal).show();
-
-        // at the start, first show login form
-        $("#post-content").show();
-    });
-
-    //// CLOSE MODAL WINDOW
-
-    $(".close-post").on('click', function(){
-        $(postModal).hide();
-    });
-
-    $("#close-btn").on('click', function(){
-        $(postModal).hide();
-    });
-
+    //// SUBMIT LOGIN/SIGN UP INFORMATION
 
     // ---------- TOGGLE NAVIGATION ---------- //
 
