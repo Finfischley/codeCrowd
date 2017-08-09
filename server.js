@@ -1,6 +1,7 @@
 //DEPENDENCIES
 var express = require("express");
 var bodyParser = require("body-parser");
+var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -9,6 +10,32 @@ var PORT = process.env.PORT || 3000;
 // Requiring our models for syncing
 var db = require("./models");
 
+// JSON Web Token
+var expressJWT = require("express-jwt");
+var jwt = require("jsonwebtoken");
+var secret = "this is a test";
+
+// Unprotected routes
+app.use(expressJWT({ secret: secret }).unless({ 
+	path: ['/', '/team', '/study-guide', '/interview-prep', '/login',
+	'/newuser', '/api/study-guide/read/posts', '/api/study-guide/post',
+	'/api/study-guide/post/content', '/api/study-guide/likes', 
+	'/api/study-guide/flags', '/api/study-guide/delete',
+	'/api/interview-prep/posts', '/api/interview-prep/location',
+	'/api/interview-prep/city', '/api/interview-prep/state',
+	'/api/interview-prep/position', '/api/interview-prep/company',
+	'/api/interview-prep/likes', '/api/interview-prep/flags',
+	'/api/interview-prep/delete', '/dashboard', '/loginpage',
+	// index.html css
+	'/assets/css/main.css', '/assets/css/full-slider.css',
+	// index.html js --> login js/responsive navbar
+	 '/assets/js/main.js', '/assets/js/logic.js', "/assets/js/jquery.js",
+	 // index.html images
+	 '/assets/images/goldenhex.png',
+	 // dashboard.html images
+	 '/assets/images/hivehex.png']
+}));
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,13 +43,16 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
-app.use(express.static("public"));
+app.use("/assets/css", express.static(path.join(__dirname, "./public/views/assets/css")));
+app.use("/assets/js", express.static(path.join(__dirname, "./public/views/assets/js")));
+app.use("/assets/images", express.static(path.join(__dirname, "./public/views/assets/images")));
 
 // Routes
 // =============================================================
-require("./routes/user-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app, jwt, secret);
 require("./routes/study-api-routes.js")(app);
 require("./routes/interview-api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
