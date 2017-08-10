@@ -1,30 +1,5 @@
 $(document).ready(function(){
 
-	// ---------- GRAB LOG IN STATUS FROM SERVER ---------- //
-	
-	var loggedIn = true; // demo value
-	var loggedUser = "Steve"; // demo value
-
-	// ---------- DYNAMICALLY ADD LOGIN/SIGNUP AND PROFILE LINK TO NAVBAR ---------- //
-
-	if (!loggedIn) {
-		// if the user is logged in
-
-		// add "Sup, ___"? link to go to profile to navbar
-		var loggedInLink = $("<li class='swapLink' id='loggedInLink'><a href='#'>Welcome, " + loggedUser + "!</a></li>");
-
-		$(".navbar-nav").append(loggedInLink);
-	}
-
-	else {
-		// if the user is not logged in
-
-		// add "login" link to go to login/signup page in navbar
-		var loggedOutLink = $("<li class='swapLink' id='loggedOutLink'><a href='#'>Buzz In</a></li>");
-
-		$(".navbar-nav").append(loggedOutLink);
-	}
-
 	// ---------- LOGIN/SIGNUP MODAL WINDOW ---------- //
 	var modal = $("#user-modal");
 
@@ -44,7 +19,7 @@ $(document).ready(function(){
         $(modal).hide();
     });
 
-    $("#cancel-btn").on('click', function(){
+    $(".cancel-btn").on('click', function(){
     	$(modal).hide();
     });
 

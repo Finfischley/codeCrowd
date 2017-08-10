@@ -1,0 +1,58 @@
+/* ********** GENERAL ********** */
+* {
+   box-sizing: border-box;
+}
+
+div#portrait {
+
+  width:100%;
+  margin:0 auto;
+  margin-top:10%;
+  margin-bottom:5%;
+
+}
+
+div.col-md-2 {
+  float:left;
+  margin:1%;
+}
+
+.trim {
+  max-height:680px;
+  max-width:268px;
+
+  margin:0 1%;
+  overflow:hidden;
+}
+
+/* ********** TEAM PIC *********** */
+
+.showing {
+  position:relative;
+  height:auto;
+  width:268px;
+}
+
+.teamPic {
+  height:auto;
+  width:268px;
+
+  position: fixed;
+  padding:1%;
+  z-index: 1;
+}
+
+.teamPic:hover {
+   filter: grayscale(0%);
+   -webkit-filter: grayscale(0%);
+   filter: none;
+}
+
+/* *********** TEAM TEXT ********** */
+
+
+/* ********** MEDIA QUERIES ********** */
+
+@media screen and (max-width:1302px) {
+
+}

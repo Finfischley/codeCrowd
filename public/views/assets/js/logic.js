@@ -1,7 +1,39 @@
 
 $(document).ready(function(){
+
 	var userToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MDIyMDk0MjF9.eoUT7nw72jE39TnKhUKNh5w7xLYApIWI2dhNA15GIbQ";
 	var loggedInUserID = 2;
+	var loggedIn = false; // starting value
+	var loggedUser = ""; // starting value
+
+	// ---------- GRAB LOG IN STATUS FROM SERVER ---------- //
+	
+	function dynamicLink(loggedInVal, loggedUserVal){
+
+		// ---------- DYNAMICALLY ADD LOGIN/SIGNUP AND PROFILE LINK TO NAVBAR ---------- //
+
+		if (!loggedInVal) {
+			// if the user is not logged in
+
+			// add "login" link to go to login/signup page in navbar
+			var loggedOutLink = $("<li class='swapLink' id='loggedOutLink'><a href='#'>Buzz In</a></li>");
+
+			$(".navbar-nav").append(loggedOutLink);
+
+		}
+
+		else {	
+			// if the user is logged in
+
+			// add "Sup, ___"? link to go to profile to navbar
+			var loggedInLink = $("<li class='swapLink' id='loggedInLink'><a href='#'>Welcome, " + loggedUserVal + "!</a></li>");
+
+			$(".navbar-nav").append(loggedInLink);
+		}
+	}
+
+	// starting dynamiclink (should show buzz in)
+	dynamicLink(loggedIn, loggedUser);
 
 	// Home login/signup ======================================================
 	$("#home-login-btn").on("click", homeLogIn);
@@ -31,8 +63,12 @@ $(document).ready(function(){
 			// window.location.href = "/dashboard";
 			console.log(data);
 
-			// here is where you will turn loggedIn = true
+			// dynamically add/change navlink
+			loggedIn = true;
 
+			loggedUser = data.first_name;
+
+			dynamicLink(loggedIn, loggedUser);
 		});
 	}
 
@@ -55,7 +91,6 @@ $(document).ready(function(){
 
 		$.post("/newuser", new_user, function(){
 			window.location.href = "/";
-			// here is where you will turn loggedIn = true
 		});
 	}
 
@@ -85,7 +120,13 @@ $(document).ready(function(){
 			userToken = "Bearer " + data.token;
 			loggedInUser = data.userID;
 			window.location.href = "/dashboard";
-			// here is where you will turn loggedIn = true
+			
+			// dynamically add/change navlink
+			loggedIn = true;
+
+			loggedUser = data.first_name;
+
+			dynamicLink(loggedIn, loggedUser);
 
 		});
 	}
@@ -109,7 +150,6 @@ $(document).ready(function(){
 
 		$.post("/newuser", new_user, function(){
 			window.location.href = "/";
-			// here is where you will turn loggedIn = true
 		});
 	}
 
