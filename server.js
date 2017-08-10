@@ -25,7 +25,7 @@ app.use(expressJWT({ secret: secret }).unless({
 	'/api/interview-prep/city', '/api/interview-prep/state',
 	'/api/interview-prep/position', '/api/interview-prep/company',
 	'/api/interview-prep/likes', '/api/interview-prep/flags',
-	'/api/interview-prep/delete', '/dashboard', '/loginpage',
+	'/api/interview-prep/delete',
 	// index.html css
 	'/assets/css/main.css', '/assets/css/full-slider.css',
 	// index.html js --> login js/responsive navbar
@@ -33,7 +33,9 @@ app.use(expressJWT({ secret: secret }).unless({
 	 // index.html images
 	 '/assets/images/goldenhex.png',
 	 // dashboard.html images
-	 '/assets/images/hivehex.png']
+	 '/assets/images/hivehex.png',
+	 // routes you need to take away afterwards
+	 '/dashboard']
 }));
 
 // Sets up the Express app to handle data parsing

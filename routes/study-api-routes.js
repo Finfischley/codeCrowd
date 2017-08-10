@@ -5,30 +5,19 @@ var db = require("../models");
 
 module.exports = function(app){
 
-	// READ all posts or by tag --> for study-guide search bar
-	app.get("/api/study-guide/:topic?", function(readReq, readRes){
-		var whereQuery = {}
+	// READ all posts or by tag/id  --> for study-guide search bar
+	app.get("/api/study-guide/read/posts", function(readReq, readRes){
 
-		if (readReq.params.topic){
-			whereQuery.tag = readReq.params.topic;
-		}
+		// console.log(readReq.query)
 
 		db.Study_Guide_Post.findAll({
-			where: whereQuery
+			where: readReq.query,
+			order: [["likes", "DESC"]]
 		}).then(function(results){
-			// console.log(studyPosts);
+			// console.log(results);
 
 			readRes.json(results);
 		});
-	});
-
-	// READ a particular post --> to view individual posts/enlarge
-	app.get("/api/study-guide/posts/:id", function(readReq, readRes){
-
-		db.Study_Guide_Post.findById(readReq.params.id).then(function(results){
-			readRes.json(results);
-		});
-
 	});
 
 	// CREATE a post
@@ -43,13 +32,15 @@ module.exports = function(app){
 	});
 
 	// UPDATE post's content
-	app.put("/api/study-guide/post/:id", function(updateReq, updateRes){
+	app.put("/api/study-guide/post/content", function(updateReq, updateRes){
 
-		// console.log(updateReq.params.id);
+		// console.log(updateReq.body);
 
-		db.Study_Guide_Post.update(updateReq.body, {
+		db.Study_Guide_Post.update({
+			content: updateReq.body.content
+		}, {
 			where: {
-				id: updateReq.params.id
+				id: updateReq.body.id
 			}
 		}).then(function(results){
 			// console.log(results);
@@ -58,13 +49,15 @@ module.exports = function(app){
 	});
 
 	// UPDATE post's likes
-	app.put("/api/study-guide/likes/:id", function(updateReq, updateRes){
+	app.put("/api/study-guide/likes", function(updateReq, updateRes){
 
-		// console.log(updateReq.params.id);
+		// console.log(updateReq.body);
 
-		db.Study_Guide_Post.update(updateReq.body, {
+		db.Study_Guide_Post.update({
+			likes: updateReq.body.likes
+		}, {
 			where: {
-				id: updateReq.params.id
+				id: updateReq.body.id
 			}
 		}).then(function(results){
 			// console.log(results);
@@ -73,13 +66,15 @@ module.exports = function(app){
 	});
 
 	// UPDATE post's flags --> NEED TO COME BACK TO THIS
-	app.put("/api/study-guide/flags/:id", function(updateReq, updateRes){
+	app.put("/api/study-guide/flags", function(updateReq, updateRes){
 
-		// console.log(updateReq.params.id);
+		// console.log(updateReq.body);
 
-		db.Study_Guide_Post.update(updateReq.body, {
+		db.Study_Guide_Post.update({
+			flags: updateReq.body.flags
+		}, {
 			where: {
-				id: updateReq.params.id
+				id: updateReq.body.id
 			}
 		}).then(function(results){
 			// console.log(results);
@@ -88,12 +83,12 @@ module.exports = function(app){
 	});
 
 	// DELETE post
-	app.delete("/api/study-guide/:id", function(deleteReq, deleteRes){
+	app.delete("/api/study-guide/delete", function(deleteReq, deleteRes){
+
+		// console.log(deleteReq.body);
 
 		db.Study_Guide_Post.destroy({
-			where: {
-				id: deleteReq.params.id
-			}
+			where: deleteReq.body
 		}).then(function(results){
 			deleteRes.end();
 		});
