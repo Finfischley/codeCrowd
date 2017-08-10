@@ -12,7 +12,7 @@ module.exports = function(app, jwt, secret){
 				password: req.query.password
 			}
 		}).then(function(results){
-			console.log(results);
+			// console.log(results);
 			if (results === null) {
 				res.send("invalid credentials");
 				return;
@@ -22,7 +22,8 @@ module.exports = function(app, jwt, secret){
 	 		res.status(200).json({
 	 			token: myToken,
 	 			userID: results.id,
-	 			firstname: results.first_name
+	 			firstname: results.first_name,
+	 			username: results.username
 	 		});
 		})
 	});

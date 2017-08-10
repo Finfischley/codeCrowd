@@ -16,7 +16,17 @@ var jwt = require("jsonwebtoken");
 var secret = "this is a test";
 
 // Unprotected routes
-app.use(expressJWT({ secret: secret }).unless({ 
+app.use(expressJWT({
+	secret: secret,
+	getToken: function fromHeaderOrQuerystring (req) {
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        return req.headers.authorization.split(' ')[1];
+    } else if (req.query && req.query.token) {
+     	return req.query.token;
+    }
+    	return null;
+  	}
+}).unless({ 
 	path: ['/', '/team', '/study-guide', '/interview-prep', '/login',
 	'/newuser', '/api/study-guide/read/posts', '/api/study-guide/post',
 	'/api/study-guide/post/content', '/api/study-guide/likes', 
@@ -33,9 +43,10 @@ app.use(expressJWT({ secret: secret }).unless({
 	 // index.html images
 	 '/assets/images/goldenhex.png',
 	 // dashboard.html images
-	 '/assets/images/hivehex.png',
+	 '/assets/images/hivehex.png'
 	 // routes you need to take away afterwards
-	 '/dashboard']
+	 //'/dashboard'
+	 ]
 }));
 
 // Sets up the Express app to handle data parsing
@@ -55,9 +66,6 @@ require("./routes/user-api-routes.js")(app, jwt, secret);
 require("./routes/study-api-routes.js")(app);
 require("./routes/interview-api-routes.js")(app);
 require("./routes/html-routes.js")(app);
-
-// require("./routes/html-routes.js")(app);
-// require("./routes/author-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
