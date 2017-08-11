@@ -2,12 +2,12 @@
 // document. ready function
 
 $.get("/api/study-guide/read/posts", function(data){
-    console.log(data);
+    // console.log(data);
       $("#study-guide-results").empty();
 
       for (var i = 0; i < data.length; i++){
 
-        console.log(data[i]);
+        // console.log(data[i]);
 
         var div = $("<div>");
 
@@ -30,13 +30,13 @@ $.get("/api/study-guide/read/posts", function(data){
 
 
         var footerContent = '<!-- likes and flags here -->' +
-           '<div class="likes-div" data="'+ uniquePostID +'">' +
-            '<span class="likes-amt" val="8">' + likesAmount + '</span>' +
+           '<div class="likes-div" data="'+ uniquePostID +'">' + '<div>#'+ data[i].tag + '</div>' +
+            '<span class="likes-amt" id="likes-text-'+ uniquePostID +'">' + likesAmount + '</span>' +
             '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
           '</div>' +
 
            '<div class="flags-div" data="'+ uniquePostID +'">' +
-            '<span class="flags-amt" val="9">' + flagsAmount + '</span>' +
+            '<span class="flags-amt" id="flags-text-'+ uniquePostID +'">' + flagsAmount + '</span>' +
             '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
           '</div>';
 
@@ -46,6 +46,8 @@ $.get("/api/study-guide/read/posts", function(data){
         row.addClass("row");
 
         col.addClass("col-md-10");
+
+        col.attr("id", "post-text-" + uniquePostID);
 
         panel.addClass("panel panel-default");
 
@@ -60,7 +62,7 @@ $.get("/api/study-guide/read/posts", function(data){
         para.text(data[i].content);
         panelBody.append(para);
 
-        title.text(data[i].title);
+        title.text(data[i].title.toUpperCase());
         panelHead.append(title);
 
         panel.append(panelHead);
@@ -86,12 +88,12 @@ $("#study-guide-modal").on("click", function(event) {
     }
 
     var newPost = {
-        title: $("#guide-title").val().trim(),
+        title: $("#guide-title").val().trim().toLowerCase(),
         content: $("#guide-body").val().trim(),
-        tag: $("#guide-tag").val().trim()
+        tag: $("#guide-tag").val().trim().replace(/ /g, "-").toLowerCase()
     };
 
-    console.log(newPost);
+    // console.log(newPost);
 
     $.post("/api/study-guide/post", newPost, function(){
         window.location.href = "/study-guide";
@@ -107,7 +109,7 @@ $(document).on("click", ".panel-footer .flags-div", function(event){
     var postID = $(this).attr("data");
     var newFlags = parseInt(flags) + 1;
 
-    if (newFlags < 3){
+    if (newFlags < 7){
       $.ajax({
         method: "PUT",
         url: "/api/study-guide/flags",
@@ -116,7 +118,7 @@ $(document).on("click", ".panel-footer .flags-div", function(event){
           id: postID
         }
       }).done(function(){
-        window.location.href = "/study-guide";
+        $("#flags-text-" + postID).text(newFlags);
       });
     }
     else {
@@ -127,7 +129,7 @@ $(document).on("click", ".panel-footer .flags-div", function(event){
           id: postID
         }
       }).done(function(){
-        window.location.href = "/study-guide";
+        $("#post-text-" + postID).empty();
       });
     }
 
@@ -144,7 +146,7 @@ $(document).on("click", ".panel-footer .likes-div", function(event){
     // console.log(likes);
     // console.log(postID);
     // console.log(newLikes);
-    
+
     $.ajax({
       method: "PUT",
       url: "/api/study-guide/likes",
@@ -153,12 +155,104 @@ $(document).on("click", ".panel-footer .likes-div", function(event){
         id: postID
       }
     }).done(function(){
-      window.location.href = "/study-guide";
+      $("#likes-text-" + postID).text(newLikes);
     });
 
     
   });
 
+$("#search-positions").on("click", function(event){
+    event.preventDefault();
+
+    var tagSearch = $("#search-parameter").val().trim().replace(/ /g, "-").toLowerCase();
+    // console.log(tagSearch);
+
+    $.ajax({
+        method: "GET",
+        url: "/api/study-guide/read/posts",
+        data: {
+            tag: tagSearch
+        }
+    }).done(function(data){
+        // console.log(data);
+
+        $("#study-guide-results").empty();
+
+        for (var i = 0; i < data.length; i++){
+
+            // console.log(data[i]);
+
+            var div = $("<div>");
+
+            var title = $("<h3>");
+
+            var para = $("<p>");
+
+            var row = $("<div>");
+            var col = $("<div>");
+            var panel = $("<div>");
+            var panelHead = $("<div>");
+            var panelBody = $("<div>");
+            
+            var likesAmount = data[i].likes;
+            var flagsAmount = data[i].flags;
+            var uniquePostID = data[i].id;
+
+            var uniqueLikesID = "likes-btn-" + i;
+            var uniqueFlagsID = "flags-btn-" + i;
+
+            var footerContent = '<!-- likes and flags here -->' +
+               '<div class="likes-div" data="'+ uniquePostID +'">' + '<div class="tag-aesthetics">#'+ data[i].tag + '</div>' +
+                '<span class="likes-amt" id="likes-text-'+ uniquePostID +'">' + likesAmount + '</span>' +
+                '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
+              '</div>' +
+
+               '<div class="flags-div" data="'+ uniquePostID +'">' +
+                '<span class="flags-amt" id="flags-text-'+ uniquePostID +'">' + flagsAmount + '</span>' +
+                '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
+              '</div>';
+
+            var panelFoot = $("<div class='panel-footer'>").html(footerContent);
+
+
+            row.addClass("row");
+
+            col.addClass("col-md-10");
+
+            col.attr("id", "post-text-" + uniquePostID);
+
+            panel.addClass("panel panel-default");
+
+            panelHead.addClass("panel-heading");
+
+            title.addClass("panel-title");
+
+            panelBody.addClass("panel-body");
+
+            panelFoot.addClass("panel-footer");
+
+            para.text(data[i].content);
+            panelBody.append(para);
+
+            title.text(data[i].title.toUpperCase());
+            panelHead.append(title);
+
+            panel.append(panelHead);
+            panel.append(panelBody);
+            panel.append(panelFoot);
+
+            col.append(panel);
+
+            row.append(col);
+
+            $("#study-guide-results").append(row);
+
+    }
+
+    }).done(function(){
+        $("#search-parameter").val("");
+    });
+});
 
 //     $("#study-guide-results").text("");
 
