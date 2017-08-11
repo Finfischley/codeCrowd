@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Home</title>
+	<title>Code Hive - Home</title>
 
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,8 +34,8 @@
 
 <body>
 
-	<!-- NAVIGATION BAR -->
-            <!-- Navigation -->
+	<!-- *************** NAVIGATION BAR *************** -->
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top menu" role="navigation">
         <div class="container" id="navbar-container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,8 +67,9 @@
         <!-- /.container -->
     </nav>
 
-	<!-- FULL PAGE SLIDESHOW CONTENT -->
-	<!-- Full Page Image Background Carousel Header -->
+	<!-- *********** FULL PAGE SLIDESHOW CONTENT *********** -->
+	
+    <!-- Full Page Image Background Carousel Header -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -115,15 +116,17 @@
 
     </header>
 
-    <!-- Login/Register Modal Window -->
+    <!-- ********** LOGIN/SIGNUP MODAL ********** -->
+
     <div id="user-modal" class="modal">
-        <!-- Login Form -->
+
+        <!-- *************** Login Form *************** -->
             <form class="animate modal-content" id="login-content">
 
                 <span class="close">&times;</span>
 
+                <!-- Main Login Form -->
                 <div class="modal-container">
-
                     <img id="modal-img" src="./assets/images/goldenhex.png"/>
                     <h2 class="modal-header">BUZZ IN</h2>
 
@@ -138,11 +141,13 @@
                     </div>
                 </div>
 
+                <!-- Login/Cancel Buttons -->
                 <div class="btn-container">
                     <button type="submit" id="home-login-btn">buzz in</button>
                     <button type="button" class="cancel-btn">cancel</button>
                 </div>
 
+                <!-- Signup Alternative -->
                 <div class="alt-container">
                     <span>
                         <a class="alt-signup" href="#">Sign Up For Code Hive</a>
@@ -150,13 +155,13 @@
                 </div>
             </form>
 
-        <!-- Signup Form-->
+        <!-- *************** Signup Form *************** -->
             <form class="animate modal-content" id="signup-content">
 
                 <span class="close">&times;</span>
 
+                <!-- Main Signup Form -->
                 <div class="modal-container">
-
                     <img id="modal-img" src="./assets/images/goldenhex.png"/>
                     <h2 class="modal-header">WELCOME, NEW BEE!</h2>
 
@@ -175,14 +180,15 @@
                         <input type="password" id="home-signup-password" required>
 
                     </div>
-
                 </div>
 
+                <!-- Signup/Cancel Buttons -->
                 <div class="btn-container">
                     <button type="submit" id="home-signup-btn">sign up</button>
                     <button type="button" class="cancel-btn">cancel</button>
                 </div>
 
+                <!-- Login Alternative -->
                 <div class="alt-container">
                     <span>
                         <a class="alt-login" href="#">Buzz In to Code Hive</a>
@@ -193,6 +199,8 @@
             <div class="clear"></div>
 
     </div>
+
+    <!-- *************** JAVASCRIPT *************** -->
 
     <!-- Script to Activate the Carousel -->
     <script>
