@@ -1,12 +1,18 @@
 // ---------- MODAL WINDOW ---------- //
 
+  // FLAGS BUTTON
+  $(".panel-footer").on("click", "#flags-btn", function(event){
+    event.preventDefault();
+    console.log("hello");
+  });
+
 // Grab the existing posts by descending order
 $.get("/api/interview-prep/posts", function(data){
   // console.log(data);
-  $("#interview-results").empty();
+  // $("#interview-results").empty();
 
   for (var i = 0; i < data.length; i++){
-    console.log(data[i]);
+    // console.log(data[i]);
 
     var div = $("<div>");
 
@@ -101,5 +107,6 @@ $("#submit-interview").on("click", function(event) {
   }).done(function(data){
     window.location.href = "/dashboard?token=" + localStorage.getItem("token");
   });
+
 
 });

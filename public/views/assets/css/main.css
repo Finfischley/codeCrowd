@@ -604,3 +604,17 @@ a.read-more:hover {
 	text-decoration-color: #FFFFFF;
 	font-weight: bold;
 }
+
+/* ---------- Likes and Flags --------- */
+span.icon {
+	color:#fff;
+}
+
+span.icon:hover {
+	cursor: pointer;
+	color:#ffc942;
+}
+
+span.likes-amt, span.flags-amt {
+	color:#ffc942;
+}
