@@ -3,6 +3,56 @@
 
 $.get("/api/study-guide/read/posts", function(data){
     console.log(data);
+      $("#study-guide-results").empty();
+
+      for (var i = 0; i < data.length; i++){
+
+        console.log(data[i]);
+
+        var div = $("<div>");
+
+        var title = $("<h3>");
+
+        var para = $("<p>");
+
+        var row = $("<div>");
+        var col = $("<div>");
+        var panel = $("<div>");
+        var panelHead = $("<div>");
+        var panelBody = $("<div>");
+        var panelFoot = $("<div>");
+
+        row.addClass("row");
+
+        col.addClass("col-md-10");
+
+        panel.addClass("panel panel-default");
+
+        panelHead.addClass("panel-heading");
+
+        title.addClass("panel-title");
+
+        panelBody.addClass("panel-body");
+
+        panelFoot.addClass("panel-footer");
+
+        para.text(data[i].content);
+        panelBody.append(para);
+
+        title.text(data[i].title);
+        panelHead.append(title);
+
+        panel.append(panelHead);
+        panel.append(panelBody);
+        panel.append(panelFoot);
+
+        col.append(panel);
+
+        row.append(col);
+
+        $("#study-guide-results").append(row);
+    };
+    
 });
 
 $("#study-guide-modal").on("click", function(event) {
