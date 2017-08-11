@@ -103,6 +103,59 @@ $(document).ready(function(){
 		window.location.href = "/";
 	});
 
+	$("#submit-dash-interview").on("click", function(event){
+		event.preventDefault();
+
+		if ($("#interview-title").val().trim() === "" || 
+    		$("#interview-body").val().trim() === "" || 
+    		$("#interview-city").val().trim() === "" ||
+    		$("#interview-state").val().trim() === "" ||
+    		$("#interview-position").val().trim() === ""){
+    	return;
+  		}
+
+  		var newInterview = {
+    		title: $("#interview-title").val().trim(),
+    		content: $("#interview-body").val().trim(),
+    		city: $("#interview-city").val().trim(),
+		    state: $("#interview-state").val().trim(),
+		    position: $("#interview-position").val().trim(),
+		    company: $("#interview-company").val().trim(),
+		    UserId: localStorage.getItem("userId")
+  		};
+
+		$.ajax({
+    		method: "POST",
+    		url: "/api/interview-prep/post",
+    		headers: {Authorization: "Bearer " + localStorage.getItem("token")},
+    		data: newInterview
+  		}).done(function(data){
+    		window.location.href = "/dashboard?token=" + localStorage.getItem("token");
+  		});
+	});
+
+	$("#submit-dash-post").on("click", function(event){
+		event.preventDefault();
+
+		if ($("#guide-title").val().trim() === "" ||
+        	$("#guide-body").val().trim() === "" ||
+        	$("#guide-tag").val().trim() === "") {
+        return;
+    	}
+
+	    var newPost = {
+	        title: $("#guide-title").val().trim(),
+	        content: $("#guide-body").val().trim(),
+	        tag: $("#guide-tag").val().trim()
+	    };
+
+    	console.log(newPost);
+
+	    $.post("/api/study-guide/post", newPost, function(){
+	        window.location.href = "/dashboard?token=" + localStorage.getItem("token");
+	    });
+	})
+
 });
 
 // Likes Functionality =========================================

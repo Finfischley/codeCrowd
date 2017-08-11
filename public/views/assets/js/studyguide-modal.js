@@ -74,7 +74,7 @@ $("#study-guide-modal").on("click", function(event) {
 
     $.post("/api/study-guide/post", newPost, function(){
         window.location.href = "/study-guide";
-    })
+    });
 
     // $("#study-guide-modal").text("Your post has been submitted!");
 });
