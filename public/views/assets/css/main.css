@@ -452,7 +452,7 @@ nav ul {
 	margin:0 auto;
 }
 
-#interview-btn, #studyguide-btn, #viewpost-btn, #home-btn {
+#interview-btn, #studyguide-btn, #viewpost-btn, #logout-btn {
 
 	/* button styling */
 	width:210px;
@@ -479,7 +479,7 @@ nav ul {
 	margin:0 auto;
 }
 
-#interview-btn:hover, #studyguide-btn:hover, #viewpost-btn:hover, #home-btn:hover {
+#interview-btn:hover, #studyguide-btn:hover, #viewpost-btn:hover, #logout-btn:hover {
 	border:3px #fff solid;
 }
 
@@ -491,7 +491,7 @@ nav ul {
 		margin:0 auto;
 	}
 
-	#interview-btn, #studyguide-btn, #viewpost-btn, #home-btn {
+	#interview-btn, #studyguide-btn, #viewpost-btn, #logout-btn {
 
 		margin:2% 5%;
 	}
@@ -505,7 +505,7 @@ nav ul {
 		margin:0 auto;
 	}
 
-	#interview-btn, #studyguide-btn, #viewpost-btn, #home-btn {
+	#interview-btn, #studyguide-btn, #viewpost-btn, #logout-btn {
 		margin:2% 1%;
 	}
 }

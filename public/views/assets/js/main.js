@@ -29,9 +29,11 @@ $(document).ready(function(){
 
         else {  
             // if the user is logged in
+            var givenToken = localStorage.getItem("token");
+            var url = "/dashboard?token=" + givenToken;
 
             // add "Sup, ___"? link to go to profile to navbar
-            var loggedInLink = $("<li class='swapLink' id='loggedInLink'><a href='#'>Welcome, " + loggedUserVal + "!</a></li>");
+            var loggedInLink = $("<li class='swapLink' id='loggedInLink'><a href='" + url + "'>Welcome, " + loggedUserVal + "!</a></li>");
 
             $(".navbar-nav").append(loggedInLink);
         }
@@ -261,6 +263,87 @@ $(document).ready(function(){
         var new_last_name = $("#dashboard-signup-lname").val().trim();
         var new_username = $("#dashboard-signup-username").val().trim();
         var new_password = $("#dashboard-signup-password").val().trim();
+
+        // For validation purposes, no empty fields
+        if (new_first_name === "" || new_last_name === "" || new_username === ""
+            || new_password === ""){
+            // alert("missing info");
+            return;
+        }
+
+        var new_user = {
+            first_name: new_first_name,
+            last_name: new_last_name,
+            username: new_username,
+            password: new_password
+        };
+
+        // Adds user to the database and then redirects to the homepage
+        $.post("/newuser", new_user, function(){
+            window.location.href = "/";
+        });
+    }
+
+    // ---------- INTERVIEW-PREP LOGIN/SIGNUP ---------- //
+    $("#intprep-login-btn").on("click", intprepLogIn);
+    $("#intprep-signup-btn").on("click", intprepSignUp);
+
+    function intprepLogIn(event){
+        event.preventDefault();
+    
+        // Grab user input
+        var intprepUsername = $("#intprep-login-username").val().trim();
+        var intprepPassword = $("#intprep-login-password").val().trim();
+
+        // For validation purposes, no empty fields
+        if (intprepUsername === ""|| intprepPassword === ""){
+            // alert("not valid");
+            return;
+        }
+
+        // Checks if the username and password match 
+        $.ajax({
+            method: "GET",
+            url: "/login",
+            data: {
+                username: intprepUsername,
+                password: intprepPassword
+            }
+        }).done(function(data){
+            // If a match isn't found, then redirect to homepage
+            if (data === 'invalid credentials'){
+                window.location.href = "/";
+                return;
+            }
+            
+            // If a match is found, then set user's information to local storage
+            // This is so validation can be persitent across pages
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userFirstName", data.firstname);
+            localStorage.setItem("userId", data.userID);
+            localStorage.setItem("username", data.username);
+
+            // Redirect to the dashboard with JSON Web Token
+            window.location.href = "/dashboard?token=" + data.token;
+            
+            // dynamically add/change navlink
+            loggedIn = true;
+
+            loggedUser = localStorage.getItem("userFirstName");
+
+            dynamicLink(loggedIn, loggedUser);
+
+        });
+    }
+
+    function intprepSignUp(event){
+        event.preventDefault();
+
+        // Grab user input
+        var new_first_name = $("#intprep-signup-fname").val().trim();
+        var new_last_name = $("#intprep-signup-lname").val().trim();
+        var new_username = $("#intprep-signup-username").val().trim();
+        var new_password = $("#intprep-signup-password").val().trim();
 
         // For validation purposes, no empty fields
         if (new_first_name === "" || new_last_name === "" || new_username === ""

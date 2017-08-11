@@ -1,4 +1,4 @@
-
+// DASHBOARD LOGIC
 $(document).ready(function(){
 	// If user is logged in, display their username in the dashboard page
 	if (localStorage.getItem("username")){

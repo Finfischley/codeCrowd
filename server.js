@@ -43,7 +43,11 @@ app.use(expressJWT({
 	 // index.html images
 	 '/assets/images/goldenhex.png',
 	 // dashboard.html images
-	 '/assets/images/hivehex.png'
+	 '/assets/images/hivehex.png',
+	 // interviewstuff.html css
+	 '/assets/css/interview-modal.css',
+	 // interviewstuff.html js
+	 '/assets/js/interview-modal.js'
 	 // routes you need to take away afterwards
 	 //'/dashboard'
 	 ]
