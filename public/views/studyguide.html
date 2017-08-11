@@ -27,8 +27,8 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
      <!-- Modal CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/studyguide-modal.css"> -->
-
+<!--     <link rel="stylesheet" type="text/css" href="assets/css/studyguide-modal.css">
+ -->
 
 </head>
 
@@ -80,14 +80,15 @@
                     </div><!-- /input-group -->
                   </div><!-- /.col-md-8 -->
                   <div class="col-md-4">
-                  <button class="btn btn-default" type="button" data-toggle="modal" data-target="#study-guide-modal" id="studyguide-btn">Share Your Coding Tips!</button>
+                  <button class="btn btn-default" type="button" data-toggle="modal" data-target="#study-guide-modal" id="study-guide-btn">Share Your Coding Tips!</button>
                   </div><!-- /.col-md-4 -->
                 </div><!-- /row -->
             </div><!-- /container -->
+        </div>
 
-            <!-- Study Guide Posts -->
-            <div class="studyguide-panel" id="study-guide-results">
-            </div>
+        <!-- Study Guide Posts -->
+        <div class="studyguide-panel" id="study-guide-results">
+        </div>
 
 
         <!-- Login/Register Modal Window -->
@@ -169,45 +170,45 @@
 
     </div>
 
-            <!-- Modal Window to Post Interview -->
-        <div id="study-guide-modal" class="modal">
+<!-- Modal Window to Make Study Guide Post -->
+    <div id="study-guide-modal" class="modal">
+        <!-- Study Guide Form -->
+        <form class="modal-content" role="form">
+    
+            <span class="close" data-dismiss="modal">&times;</span>
+
             <div class="modal-container">
-                <div class="modal-header">
-                    <span data-dismiss="modal">&times;</span></br>
-                    <h3 class="modal-title">Share Your Coding Tips!</h3>
-                </div><!-- /modal-header -->
 
-                <div id="studyguide-form">
-                    <p>Share your wealth of knowledge and help your fellow coder bees with "need-to-know" coding tips and topics that are a must in this industry!
+                <h2 class="modal-header">Share Your Coding Tips!</h2>
+                <p>Share your wealth of knowledge and help your fellow coder bees with "need-to-know" coding tips and topics that are a must in this industry!</p>
 
-                    <form method="POST" role="form">
+                <div class="login-container">
 
-                        <div class="form-group">
-                            <label for="guide-title">Title</label>
-                            <input type="guide-title" class="form-control" id="guide-title" required>
-                        </div><!-- /form-group -->
+                    <label for="guide-title">Title</label>
+                    <input type="guide-title" class="form-control" id="guide-title" required>
 
-                        <div class="form-group">
-                            <label for="guide-body">Body</label>
-                            <textarea rows="5" class="form-control" id="guide-body" required></textarea>
-                        </div><!-- /form-group -->
+                    <label for="guide-body">Body</label>
+                    <textarea rows="5" class="form-control" id="guide-body" required></textarea>
 
-                        <div class="form-group">
-                            <label for="guide-tag">Tag</label>
-                            <input type="guide-tag" class="form-control" id="guide-tag" required>
-                        </div><!-- /form-group -->
+                    <label for="guide-tag">Tag</label>
+                    <input type="guide-tag" class="form-control" id="guide-tag" required>
+                
+                </div>
+            
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary" id="submit-post" data-toggle="modal" data-target="#study-guide-modal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </form>
+
+        <div class="clear"></div>
+
+    </div>
 
 
-                        <!-- Submit Button for Form -->
-                        <button type="submit" class="btn btn-primary" id="submit-post" data-toggle="modal" data-target="#study-guide-modal">Submit</button>
-                    </form>
-                </div><!-- /studyguide-form -->
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div><!-- /modal-footer -->
-            </div><!-- /modal-container -->
-        </div><!-- /study-guide-modal -->
 
     <script type="text/javascript" src="assets/js/studyguide-modal.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
