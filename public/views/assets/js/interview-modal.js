@@ -122,12 +122,12 @@ $.get("/api/interview-prep/posts", function(data){
     para.text(data[i].content);
     panelBody.append(para);
 
-    title.text(data[i].position);
+    title.text(data[i].position.toUpperCase());
 
-    if (!data[i].company) {
+    if (!data[i].company.toUpperCase()) {
       panelHead.append(title);
     } else {
-      title.append(" at " + data[i].company);
+      title.append(" at " + data[i].company.toUpperCase());
       panelHead.append(title);
     }
 
@@ -166,12 +166,12 @@ $("#submit-interview").on("click", function(event) {
 
   // the object that will be sent to the backend
   var newInterview = {
-    title: $("#interview-title").val().trim(),
+    title: $("#interview-title").val().trim().toLowerCase(),
     content: $("#interview-body").val().trim(),
-    city: $("#interview-city").val().trim(),
-    state: $("#interview-state").val().trim(),
-    position: $("#interview-position").val().trim(),
-    company: $("#interview-company").val().trim(),
+    city: $("#interview-city").val().trim().toLowerCase(),
+    state: $("#interview-state").val().trim().toLowerCase(),
+    position: $("#interview-position").val().trim().toLowerCase(),
+    company: $("#interview-company").val().trim().toLowerCase(),
     UserId: localStorage.getItem("userId")
   };
 
@@ -260,12 +260,12 @@ $("#search-positions").on("click", function(event){
       para.text(data[j].content);
       panelBody.append(para);
 
-      title.text(data[j].position);
+      title.text(data[j].position.toUpperCase());
 
-      if (!data[j].company) {
+      if (!data[j].company.toUpperCase()) {
         panelHead.append(title);
       } else {
-        title.append(" at " + data[j].company);
+        title.append(" at " + data[j].company.toUpperCase());
         panelHead.append(title);
       }
 
