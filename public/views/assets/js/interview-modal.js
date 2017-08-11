@@ -5,34 +5,56 @@
     event.preventDefault();
 
     var flags = $(this).text();
-    console.log(this);
-    var postID = $(this).attr();
-    // console.log(typeof(flags));
-    // console.log(flags);
-    // console.log(postID);
+    var postID = $(this).attr("data");
+    var newFlags = parseInt(flags) + 1;
 
-    if (Number(flags) <= 6){
-      // $.ajax({
-      //   method: "PUT",
-      //   url: "/api/study-guide/flags",
-      //   data: {
-      //     flags:
-      //     id: 
-      //   }
-      // })
-      return;
+    if (newFlags < 3){
+      $.ajax({
+        method: "PUT",
+        url: "/api/interview-prep/flags",
+        data: {
+          flags: newFlags,
+          id: postID
+        }
+      }).done(function(){
+        window.location.href = "/interview-prep";
+      });
+    }
+    else {
+      $.ajax({
+        method: "DELETE",
+        url: "/api/interview-prep/delete",
+        data: {
+          id: postID
+        }
+      }).done(function(){
+        window.location.href = "/interview-prep";
+      });
     }
 
-    console.log("you get deleted");
   });
 
-    $(document).on("click", ".panel-footer .likes-div", function(event){
+  $(document).on("click", ".panel-footer .likes-div", function(event){
     event.preventDefault();
 
     var likes = $(this).text();
-    var uniqueTest = $("span").attr("data");
-    console.log(this);
-    console.log(uniqueTest);
+    var postID = $(this).attr("data");
+    var newLikes = parseInt(likes) + 1;
+
+    // console.log(likes);
+    // console.log(postID);
+    // console.log(newLikes);
+    
+    $.ajax({
+      method: "PUT",
+      url: "/api/interview-prep/likes",
+      data: {
+        likes: newLikes,
+        id: postID
+      }
+    }).done(function(){
+      window.location.href = "/interview-prep";
+    });
 
     
   });
@@ -69,12 +91,12 @@ $.get("/api/interview-prep/posts", function(data){
 
 
     var footerContent = '<!-- likes and flags here -->' +
-           '<div class="likes-div">' +
+           '<div class="likes-div" data="'+ uniquePostID +'">' +
             '<span class="likes-amt" val="8">' + likesAmount + '</span>' +
-            '  <span data="'+ uniquePostID +'" id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
+            '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
           '</div>' +
 
-           '<div class="flags-div">' +
+           '<div class="flags-div" data="'+ uniquePostID +'">' +
             '<span class="flags-amt" val="9">' + flagsAmount + '</span>' +
             '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
           '</div>';

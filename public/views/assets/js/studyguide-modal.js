@@ -20,7 +20,28 @@ $.get("/api/study-guide/read/posts", function(data){
         var panel = $("<div>");
         var panelHead = $("<div>");
         var panelBody = $("<div>");
-        var panelFoot = $("<div>");
+        
+        var likesAmount = data[i].likes;
+        var flagsAmount = data[i].flags;
+        var uniquePostID = data[i].id;
+
+        var uniqueLikesID = "likes-btn-" + i;
+        var uniqueFlagsID = "flags-btn-" + i;
+
+
+        var footerContent = '<!-- likes and flags here -->' +
+           '<div class="likes-div" data="'+ uniquePostID +'">' +
+            '<span class="likes-amt" val="8">' + likesAmount + '</span>' +
+            '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
+          '</div>' +
+
+           '<div class="flags-div" data="'+ uniquePostID +'">' +
+            '<span class="flags-amt" val="9">' + flagsAmount + '</span>' +
+            '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
+          '</div>';
+
+        var panelFoot = $("<div class='panel-footer'>").html(footerContent);
+
 
         row.addClass("row");
 
@@ -79,6 +100,64 @@ $("#study-guide-modal").on("click", function(event) {
     // $("#study-guide-modal").text("Your post has been submitted!");
 });
 
+$(document).on("click", ".panel-footer .flags-div", function(event){
+    event.preventDefault();
+
+    var flags = $(this).text();
+    var postID = $(this).attr("data");
+    var newFlags = parseInt(flags) + 1;
+
+    if (newFlags < 3){
+      $.ajax({
+        method: "PUT",
+        url: "/api/study-guide/flags",
+        data: {
+          flags: newFlags,
+          id: postID
+        }
+      }).done(function(){
+        window.location.href = "/study-guide";
+      });
+    }
+    else {
+      $.ajax({
+        method: "DELETE",
+        url: "/api/study-guide/delete",
+        data: {
+          id: postID
+        }
+      }).done(function(){
+        window.location.href = "/study-guide";
+      });
+    }
+
+
+});
+
+$(document).on("click", ".panel-footer .likes-div", function(event){
+    event.preventDefault();
+
+    var likes = $(this).text();
+    var postID = $(this).attr("data");
+    var newLikes = parseInt(likes) + 1;
+
+    // console.log(likes);
+    // console.log(postID);
+    // console.log(newLikes);
+    
+    $.ajax({
+      method: "PUT",
+      url: "/api/study-guide/likes",
+      data: {
+        likes: newLikes,
+        id: postID
+      }
+    }).done(function(){
+      window.location.href = "/study-guide";
+    });
+
+    
+  });
 
 
 //     $("#study-guide-results").text("");

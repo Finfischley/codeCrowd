@@ -159,7 +159,7 @@ module.exports = function(app){
 
 	// DELETE post
 	app.delete("/api/interview-prep/delete", function(deleteReq, deleteRes){
-
+		console.log(deleteReq.body);
 		db.Interview_Prep_Post.destroy({
 			where: deleteReq.body
 		}).then(function(results){
