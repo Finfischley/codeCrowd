@@ -449,5 +449,89 @@ $(document).ready(function(){
 
 });
 
+    // ---------- TEAM LOGIN/SIGNUP ---------- //
+    $("#team-login-btn").on("click", teamLogIn);
+    $("#team-signup-btn").on("click", teamSignUp);
+
+    function teamLogIn(event){
+        event.preventDefault();
+    
+        // Grab user input
+        var teamUsername = $("#team-login-username").val().trim();
+        var teamPassword = $("#team-login-password").val().trim();
+
+        // For validation purposes, no empty fields
+        if (teamUsername === ""|| teamPassword === ""){
+            // alert("not valid");
+            return;
+        }
+
+        // Checks if the username and password match 
+        $.ajax({
+            method: "GET",
+            url: "/login",
+            data: {
+                username: teamUsername,
+                password: teamPassword
+            }
+        }).done(function(data){
+            // If a match isn't found, then redirect to homepage
+            if (data === 'invalid credentials'){
+                window.location.href = "/";
+                return;
+            }
+            
+            // If a match is found, then set user's information to local storage
+            // This is so validation can be persitent across pages
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userFirstName", data.firstname);
+            localStorage.setItem("userId", data.userID);
+            localStorage.setItem("username", data.username);
+
+            // Redirect to the dashboard with JSON Web Token
+            window.location.href = "/dashboard?token=" + data.token;
+            
+            // dynamically add/change navlink
+            loggedIn = true;
+
+            loggedUser = localStorage.getItem("userFirstName");
+
+            dynamicLink(loggedIn, loggedUser);
+
+        });
+    }
+
+    function teamSignUp(event){
+        event.preventDefault();
+
+        // Grab user input
+        var new_first_name = $("#team-signup-fname").val().trim();
+        var new_last_name = $("#team-signup-lname").val().trim();
+        var new_username = $("#team-signup-username").val().trim();
+        var new_password = $("#team-signup-password").val().trim();
+
+        // For validation purposes, no empty fields
+        if (new_first_name === "" || new_last_name === "" || new_username === ""
+            || new_password === ""){
+            // alert("missing info");
+            return;
+        }
+
+        var new_user = {
+            first_name: new_first_name,
+            last_name: new_last_name,
+            username: new_username,
+            password: new_password
+        };
+
+        // Adds user to the database and then redirects to the homepage
+        $.post("/newuser", new_user, function(){
+            window.location.href = "/";
+        });
+    }
+
+
+});
+
 
 // });
