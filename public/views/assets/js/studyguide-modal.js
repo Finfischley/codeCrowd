@@ -1,31 +1,33 @@
 // ---------- MODAL WINDOW ---------- //
 // document. ready function
+
 $.get("/api/study-guide/read/posts", function(data){
-    // make data all pretty
+    console.log(data);
 });
 
 $("#study-guide-modal").on("click", function(event) {
     event.preventDefault();
 
     if ($("#guide-title").val().trim() === "" ||
-        $("#guide-content").val().trim() === "" ||
+        $("#guide-body").val().trim() === "" ||
         $("#guide-tag").val().trim() === "") {
         return;
     }
 
     var newPost = {
         title: $("#guide-title").val().trim(),
-        content: $("#guide-content").val().trim(),
+        content: $("#guide-body").val().trim(),
         tag: $("#guide-tag").val().trim()
     };
 
     console.log(newPost);
 
-  $.post("/api/study-guide/post", newPost)
-  .done(function(data) {
+    $.post("/api/study-guide/post", newPost, function(){
+        window.location.href = "/study-guide";
+    })
 
-    $("#study-guide-modal").text("Your post has been submitted!");
-  });
+    // $("#study-guide-modal").text("Your post has been submitted!");
+});
 
 
 
