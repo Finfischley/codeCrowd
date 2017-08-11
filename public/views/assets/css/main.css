@@ -1,3 +1,36 @@
+/*
+	CODE HIVE  -  MAIN.CSS 
+
+	- summary: main css styles, including:
+		* consistent site aesthetics
+		* responsive designs
+		* login/signup modal styling
+		* css animation
+	- styling sections:
+		* general
+		* css animations
+		* navigation
+		* toggle navigation
+		* text
+		* inner carousel body + caption
+		* modal
+			* login/signup modal
+		* dashboard
+			* dashboard header
+			* responsive dashboard header
+			* dashboard buttons
+			* responsive dashboard buttons
+			* dashboard user's post modal
+		* interview & study guide body
+		* likes, flags, and tags
+		* modal media queries
+			* login/signup modal
+			* study guide modal
+			* interview modal
+*/
+
+/* ---------------------------------------------------------- */
+
 /* ---------- GENERAL ---------- */
 body {
 	background-color: #222;
@@ -289,6 +322,7 @@ nav ul {
 	font-size:21px;
 }
 
+/* *** LOGIN/SIGNUP MODAL *** */
 /* Login Form Styling */
 .login-container {
 	display:block;
@@ -383,8 +417,9 @@ nav ul {
 	display: inline;
 }
 
-/* ---------- DASHBOARD / HEADER ---------- */
+/* ---------- DASHBOARD ---------- */
 
+/* *** DASHBOARD HEADER *** */
 .dash-container {
 	width:90%;
 	margin:0 auto;	
@@ -434,6 +469,7 @@ nav ul {
 	float:left;
 }
 
+/* *** RESPONSIVE DASHBOARD HEADER *** */
 @media screen and (max-width:641px) {
 	#hivehexbg {
 		position:relative;
@@ -450,7 +486,7 @@ nav ul {
 	}
 }
 
-/* ---------- DASHBOARD / BUTTONS ---------- */
+/* *** DASHBOARD BUTTONS *** */
 
 #dash-btns {
 	background-color: #222;
@@ -499,6 +535,7 @@ nav ul {
 	border:3px #fff solid;
 }
 
+/* *** RESPONSIVE DASHBOARD BUTTONS *** */
 @media screen and (max-width:492px) {
 
 	.dash-btn-container {
@@ -526,7 +563,7 @@ nav ul {
 	}
 }
 
-/* ---------- MODAL USER POST ---------- */
+/* *** DASHBOARD USER'S POST MODAL *** */
 
 .scroll-modal {
 	position:fixed;
@@ -574,7 +611,7 @@ nav ul {
 
 }
 
-/* ---------- INTERVIEW BODY CSS ---------- */
+/* ---------- INTERVIEW & STUDY GUIDE BODY ---------- */
 
 .interview-panel, .studyguide-panel {
 	margin: 5%

@@ -1,4 +1,17 @@
-/* ********** GENERAL ********** */
+/*
+  CODE HIVE  -  TEAM.CSS 
+
+  - summary: styling for the team.html page
+  - styling sections:
+    * general
+    * individual team member
+    * code hive team text
+    * media queries
+*/
+
+/* ---------------------------------------------------------- */
+
+/* ---------- GENERAL ---------- */
 * {
    box-sizing: border-box;
 }
@@ -61,7 +74,7 @@ div.col-md-2 {
   overflow:hidden;
 }
 
-/* ********** TEAM PIC *********** */
+/* ---------- INDIVIDUAL TEAM MEMBER ---------- */
 #jaz {
   z-index: 18;
   background-color: #55DDE0;
@@ -132,7 +145,7 @@ div.col-md-2 {
     bottom:0;
 }
 
-/* *********** TEAM TEXT ********** */
+/* ---------- CODE HIVE TEAM TEXT ---------- */
 #team {
   z-index:20;
   position:absolute;
@@ -153,7 +166,7 @@ div.col-md-2 {
   padding:0% 5% 5% 5% ;
 }
 
-/* ********** MEDIA QUERIES ********** */
+/* ---------- MEDIA QUERIES ---------- */
 
 @media screen and (max-width:735px) {
     .showing {

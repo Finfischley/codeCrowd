@@ -1,3 +1,13 @@
+/*
+	CODE HIVE  -  STUDYGUIDE-MODAL.CSS 
+
+	- summary: styling for the studyguide.html modal
+	- styling sections:
+		* modal
+*/
+
+/* ---------------------------------------------------------- */
+
 /* ---------- MODAL ---------- */
 .modal-container {
 	position: fixed; /* Stay in place */
