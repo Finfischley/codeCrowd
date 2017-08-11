@@ -622,8 +622,13 @@ a.read-more:hover {
 }
 
 /* ---------- LIKES AND FLAGS --------- */
+.panel-footer {
+height:50px;
+}
+
 span.icon {
 	color:#fff;
+	float:left;
 }
 
 span.icon:hover {
@@ -633,6 +638,14 @@ span.icon:hover {
 
 span.likes-amt, span.flags-amt {
 	color:#ffc942;
+	float:left;
+	letter-spacing: 2px;
+}
+
+.likes-div, .flags-div {
+	display:block;
+	float:left;
+	margin:1%;
 }
 
 /* ---------- MODAL MEDIA QUERIES --------- */
