@@ -447,7 +447,7 @@ $(document).ready(function(){
     }
 
 
-});
+// });
 
     // ---------- TEAM LOGIN/SIGNUP ---------- //
     $("#team-login-btn").on("click", teamLogIn);

@@ -1,15 +1,48 @@
 // ---------- MODAL WINDOW ---------- //
 
   // FLAGS BUTTON
-  $(".panel-footer").on("click", "#flags-btn", function(event){
+  $(document).on("click", ".panel-footer .flags-div", function(event){
     event.preventDefault();
-    console.log("hello");
+
+    var flags = $(this).text();
+    console.log(this);
+    var postID = $(this).attr();
+    // console.log(typeof(flags));
+    // console.log(flags);
+    // console.log(postID);
+
+    if (Number(flags) <= 6){
+      // $.ajax({
+      //   method: "PUT",
+      //   url: "/api/study-guide/flags",
+      //   data: {
+      //     flags:
+      //     id: 
+      //   }
+      // })
+      return;
+    }
+
+    console.log("you get deleted");
   });
+
+    $(document).on("click", ".panel-footer .likes-div", function(event){
+    event.preventDefault();
+
+    var likes = $(this).text();
+    var uniqueTest = $("span").attr("data");
+    console.log(this);
+    console.log(uniqueTest);
+
+    
+  });
+
 
 // Grab the existing posts by descending order
 $.get("/api/interview-prep/posts", function(data){
-  // console.log(data);
-  // $("#interview-results").empty();
+  console.log(data);
+  $("#interview-results").empty();
+
 
   for (var i = 0; i < data.length; i++){
     // console.log(data[i]);
@@ -25,7 +58,28 @@ $.get("/api/interview-prep/posts", function(data){
     var panel = $("<div>");
     var panelHead = $("<div>");
     var panelBody = $("<div>");
-    var panelFoot = $("<div>");
+    // var panelFoot = $("<div>");
+
+    var likesAmount = data[i].likes;
+    var flagsAmount = data[i].flags;
+    var uniquePostID = data[i].id;
+
+    var uniqueLikesID = "likes-btn-" + i;
+    var uniqueFlagsID = "flags-btn-" + i;
+
+
+    var footerContent = '<!-- likes and flags here -->' +
+           '<div class="likes-div">' +
+            '<span class="likes-amt" val="8">' + likesAmount + '</span>' +
+            '  <span data="'+ uniquePostID +'" id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
+          '</div>' +
+
+           '<div class="flags-div">' +
+            '<span class="flags-amt" val="9">' + flagsAmount + '</span>' +
+            '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
+          '</div>';
+
+    var panelFoot = $("<div class='panel-footer'>").html(footerContent);
 
     row.addClass("row");
 

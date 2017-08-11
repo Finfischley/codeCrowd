@@ -9,7 +9,7 @@ module.exports = function(app){
 
 	// Code Hive Team page
 	app.get("/team", function(req, res){
-		res.sendFile(path.join(__dirname, "../public/views/teampage.html"));
+		res.sendFile(path.join(__dirname, "../public/views/team.html"));
 	});
 
 	// Study-guide posts
