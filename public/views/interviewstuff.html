@@ -27,8 +27,8 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
 	  <!-- Modal CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/interview-modal.css">
-
+<!--     <link rel="stylesheet" type="text/css" href="assets/css/interview-modal.css">
+ -->
 </head>
 
 <body class="fill">
@@ -157,59 +157,56 @@
         </div><!-- /interview-search-wrapper -->
 
 
-        <!-- Modal Window to Post Interview -->
-        <div id="post-interview-modal" class="modal">
+<!-- Modal Window to Make Interview Post -->
+    <div id="post-interview-modal" class="modal">
+        <!-- Post Interview Form -->
+        <form class="modal-content" role="form">
+    
+            <span class="close" data-dismiss="modal">&times;</span>
+
             <div class="modal-container">
-                <div class="modal-header">
-                    <span class ="close" data-dismiss="modal">&times;</span></br>
-                    <h3 class="modal-title">Share Your Interview Experience!</h3>
-                </div><!-- /modal-header -->
 
-                <div id="interview-form">
-                    <p>Help your fellow coder bees and share your interview experience or tips below</p>
+                <h2 class="modal-header">Share Your Interview Experience!</h2>
+                <p>Help your fellow coder bees and share your interview experience or tips below</p>
 
-                    <form role="form">
+                <div class="login-container">
 
-                        <div class="form-group">
-                            <label for="interview-title">Title</label>
-                            <input type="interview-title" class="form-control" id="interview-title">
-                        </div><!-- /form-group -->
+                    <label for="interview-title">Title</label>
+                    <input type="interview-title" class="form-control" id="interview-title">
 
-                        <div class="form-group">
-                            <label for="interview-position">Position</label>
-                            <input type="interview-position" class="form-control" id="interview-position" required>
-                        </div><!-- /form-group -->
+                    <label for="interview-position">Position</label>
+                    <input type="interview-position" class="form-control" id="interview-position" required>
 
-                        <div class="form-group">
-                            <label for="interview-body">Body</label>
-                            <textarea rows="5" class="form-control" id="interview-body" required></textarea>
-                        </div><!-- /form-group -->
+                    <label for="interview-body">Body</label>
+                    <textarea rows="5" class="form-control" id="interview-body" required></textarea>
 
-                        <div class="form-group">
-                            <label for="interview-city">City</label>
-                            <input type="interview-city" class="form-control" id="interview-city" required>
-                        </div><!-- /form-group -->
+                    <label for="interview-city">City</label>
+                    <input type="interview-city" class="form-control" id="interview-city" required>
 
-                        <div class="form-group">
-                            <label for="interview-state">State</label>
-                            <input type="interview-state" class="form-control" id="interview-state" required>
-                        </div><!-- /form-group -->
+                    <label for="interview-state">State</label>
+                    <input type="interview-state" class="form-control" id="interview-state" required>
 
-                        <div class="form-group">
-                            <label for="interview-company">Company (Optional)</label>
-                            <input type="interview-company" class="form-control" id="interview-company">
-                        </div><!-- /form-group -->
+                    <label for="interview-company">Company (Optional)</label>
+                    <input type="interview-company" class="form-control" id="interview-company">
+                
+                </div>
+            
+            </div>
 
-                        <!-- Submit Button for Form -->
-                        <button type="submit" class="btn btn-primary" id="submit-interview" data-toggle="modal" data-target="#post-interview-modal">Submit</button>
-                    </form>
-                </div><!-- /interview-form -->
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary" id="submit-interview" data-toggle="modal" data-target="#post-interview-modal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div><!-- /modal-footer -->
-            </div><!-- /modal-container -->
-        </div><!-- /post-interview-modal -->
+        </form>
+
+        <div class="clear"></div>
+
+    </div>
+
+
+
+
 
         <!-- Login/Register Modal Window -->
     <div id="user-modal" class="modal">

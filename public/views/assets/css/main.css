@@ -367,6 +367,14 @@ nav ul {
 	border:2px #ffc942 solid;
 }
 
+.modal-backdrop {
+  z-index: -1;
+}
+
+.form-control {
+	display: inline;
+}
+
 /* ---------- DASHBOARD  / HEADER ---------- */
 
 .dash-container {
