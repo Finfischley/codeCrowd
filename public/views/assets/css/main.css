@@ -383,7 +383,7 @@ nav ul {
 	display: inline;
 }
 
-/* ---------- DASHBOARD  / HEADER ---------- */
+/* ---------- DASHBOARD / HEADER ---------- */
 
 .dash-container {
 	width:90%;
@@ -450,7 +450,7 @@ nav ul {
 	}
 }
 
-/* ---------- DASHBOARD  / BUTTONS ---------- */
+/* ---------- DASHBOARD / BUTTONS ---------- */
 
 #dash-btns {
 	background-color: #222;
@@ -576,13 +576,8 @@ nav ul {
 
 /* ---------- INTERVIEW BODY CSS ---------- */
 
-
-.interview-wrapper  {
-    height: 100%;
-}
-
 .interview-panel, .studyguide-panel {
-	margin: 50px 5px 5px 50px;
+	margin: 5%
 }
 
 .interview-search-wrapper, .studyguide-search-wrapper {
