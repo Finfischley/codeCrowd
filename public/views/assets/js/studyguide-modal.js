@@ -202,7 +202,7 @@ $("#search-positions").on("click", function(event){
             var uniqueFlagsID = "flags-btn-" + i;
 
             var footerContent = '<!-- likes and flags here -->' +
-               '<div class="likes-div" data="'+ uniquePostID +'">' + '<div class="tag-aesthetics">#'+ data[i].tag + '</div>' +
+               '<div class="likes-div" data="'+ uniquePostID +'">' + '<div id="tag-aesthetics">#'+ data[i].tag + '</div>' +
                 '<span class="likes-amt" id="likes-text-'+ uniquePostID +'">' + likesAmount + '</span>' +
                 '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
               '</div>' +

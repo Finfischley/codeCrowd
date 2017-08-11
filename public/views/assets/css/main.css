@@ -621,7 +621,7 @@ a.read-more:hover {
 	font-weight: bold;
 }
 
-/* ---------- LIKES AND FLAGS --------- */
+/* ---------- LIKES, FLAGS, AND TAGS --------- */
 .panel-footer {
 height:50px;
 }
@@ -646,6 +646,18 @@ span.likes-amt, span.flags-amt {
 	display:block;
 	float:left;
 	margin:1%;
+}
+
+div .likes-div div {
+	position:absolute;
+	right:0;
+
+	display:block;
+	float:right;
+
+	text-align:right;
+	color:#fb1;
+	padding-right:5%;
 }
 
 /* ---------- MODAL MEDIA QUERIES --------- */
