@@ -8,7 +8,7 @@
     var postID = $(this).attr("data");
     var newFlags = parseInt(flags) + 1;
 
-    if (newFlags < 3){
+    if (newFlags < 7){
       $.ajax({
         method: "PUT",
         url: "/api/interview-prep/flags",
@@ -17,7 +17,7 @@
           id: postID
         }
       }).done(function(){
-        window.location.href = "/interview-prep";
+        $("#flags-text-" + postID).text(newFlags);
       });
     }
     else {
@@ -28,7 +28,7 @@
           id: postID
         }
       }).done(function(){
-        window.location.href = "/interview-prep";
+        $("#post-text-" + postID).empty();
       });
     }
 
@@ -53,7 +53,7 @@
         id: postID
       }
     }).done(function(){
-      window.location.href = "/interview-prep";
+      $("#likes-text-" + postID).text(newLikes);
     });
 
     
@@ -62,7 +62,7 @@
 
 // Grab the existing posts by descending order
 $.get("/api/interview-prep/posts", function(data){
-  console.log(data);
+  // console.log(data);
   $("#interview-results").empty();
 
 
@@ -92,12 +92,12 @@ $.get("/api/interview-prep/posts", function(data){
 
     var footerContent = '<!-- likes and flags here -->' +
            '<div class="likes-div" data="'+ uniquePostID +'">' +
-            '<span class="likes-amt" val="8">' + likesAmount + '</span>' +
+            '<span class="likes-amt" id="likes-text-'+ uniquePostID +'">' + likesAmount + '</span>' +
             '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
           '</div>' +
 
            '<div class="flags-div" data="'+ uniquePostID +'">' +
-            '<span class="flags-amt" val="9">' + flagsAmount + '</span>' +
+            '<span class="flags-amt" id="flags-text-'+ uniquePostID +'">' + flagsAmount + '</span>' +
             '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
           '</div>';
 
@@ -106,6 +106,8 @@ $.get("/api/interview-prep/posts", function(data){
     row.addClass("row");
 
     col.addClass("col-md-10");
+
+    col.attr("id", "post-text-" + uniquePostID);
 
     panel.addClass("panel panel-default");
 
@@ -184,5 +186,102 @@ $("#submit-interview").on("click", function(event) {
     window.location.href = "/dashboard?token=" + localStorage.getItem("token");
   });
 
+
+});
+
+$("#search-positions").on("click", function(event){
+  event.preventDefault();
+
+  var positionSearch = $("#search-parameter").val().trim().toLowerCase();
+  // console.log(positionSearch);
+
+  $.ajax({
+    method: "GET",
+    url: "/api/interview-prep/position",
+    data: {
+      position: positionSearch
+    }
+  }).done(function(data){
+    // console.log(data);
+
+    $("#interview-results").empty();
+
+    for (var j = 0; j < data.length; j++){
+      var div = $("<div>");
+
+      var title = $("<h3>");
+
+      var para = $("<p>");
+
+      var row = $("<div>");
+      var col = $("<div>");
+      var panel = $("<div>");
+      var panelHead = $("<div>");
+      var panelBody = $("<div>");
+      // var panelFoot = $("<div>");
+
+      var likesAmount = data[j].likes;
+      var flagsAmount = data[j].flags;
+      var uniquePostID = data[j].id;
+
+      var uniqueLikesID = "likes-btn-" + j;
+      var uniqueFlagsID = "flags-btn-" + j;
+
+
+      var footerContent = '<!-- likes and flags here -->' +
+             '<div class="likes-div" data="'+ uniquePostID +'">' +
+              '<span class="likes-amt" id="likes-text-'+ uniquePostID +'">' + likesAmount + '</span>' +
+              '  <span id="' + uniqueLikesID + '" class="icon likes-icon glyphicon glyphicon-star-empty"></span>' +
+            '</div>' +
+
+             '<div class="flags-div" data="'+ uniquePostID +'">' +
+              '<span class="flags-amt" id="flags-text-'+ uniquePostID +'">' + flagsAmount + '</span>' +
+              '  <span id="'+ uniqueFlagsID + '" class="icon flags-icon glyphicon glyphicon-flag"></span>' +
+            '</div>';
+
+      var panelFoot = $("<div class='panel-footer'>").html(footerContent);
+
+      row.addClass("row");
+
+      col.addClass("col-md-10");
+
+      col.attr("id", "post-text-" + uniquePostID);
+
+      panel.addClass("panel panel-default");
+
+      panelHead.addClass("panel-heading");
+
+      title.addClass("panel-title");
+
+      panelBody.addClass("panel-body");
+
+      panelFoot.addClass("panel-footer");
+
+      para.text(data[j].content);
+      panelBody.append(para);
+
+      title.text(data[j].position);
+
+      if (!data[j].company) {
+        panelHead.append(title);
+      } else {
+        title.append(" at " + data[j].company);
+        panelHead.append(title);
+      }
+
+      panel.append(panelHead);
+      panel.append(panelBody);
+      panel.append(panelFoot);
+
+      col.append(panel);
+
+      row.append(col);
+
+      $("#interview-results").append(row);
+
+    }
+  }).done(function(){
+    $("#search-parameter").val("")
+  });
 
 });
