@@ -176,6 +176,14 @@ nav a {
 	font-size: 20px;
 }
 
+.navbar-header a.navbar-brand {
+	color:#fff;
+}
+
+.navbar-header a.navbar-brand:hover, .navbar-header a.navbar-brand:hover {
+	color:#fb1;
+}
+
 nav ul {
 	font-size:20px;
 	color:#9d9d9d;
@@ -613,7 +621,7 @@ a.read-more:hover {
 	font-weight: bold;
 }
 
-/* ---------- Likes and Flags --------- */
+/* ---------- LIKES AND FLAGS --------- */
 span.icon {
 	color:#fff;
 }
@@ -625,4 +633,64 @@ span.icon:hover {
 
 span.likes-amt, span.flags-amt {
 	color:#ffc942;
+}
+
+/* ---------- MODAL MEDIA QUERIES --------- */
+
+/* *** LOGIN/SIGNUP MODAL *** */
+@media screen and (max-width:501px) {
+
+	.modal {
+		left:0%;
+	}
+
+	#user-modal {
+		position:fixed;
+		left:0%;
+		top:22%;
+
+		width:400px;
+		height:500px;
+	}
+}
+
+@media screen and (min-width:502px) and (max-width:729px) {
+
+	#user-modal {
+		position:fixed;
+		left:2%;
+		top:23%;
+
+		width:400px;
+		height:400px;
+	}
+}
+
+/* *** STUDY GUIDE MODAL *** */
+@media screen and (max-width:501px) {
+	
+	.modal {
+		left:0%;
+	}
+
+	#study-guide-modal form.modal-content {
+		width:400px;
+		padding:20px;
+		margin-left:0;
+		margin-right:0;
+	}
+}
+
+/* *** INTERVIEW MODAL *** */
+@media screen and (max-width:501px) {
+	.modal {
+		left:0%;
+	}
+
+	#post-interview-modal form.modal-content {
+		width:400px;
+		padding:20px;
+		margin-left:0;
+		margin-right:0;
+	}
 }

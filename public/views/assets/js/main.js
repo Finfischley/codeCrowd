@@ -110,7 +110,6 @@ $(document).ready(function(){
         $(postModal).hide();
     });
 
-
     // ---------- TOGGLE NAVIGATION ---------- //
 
     $('.toggle-nav').click(function(e) {
