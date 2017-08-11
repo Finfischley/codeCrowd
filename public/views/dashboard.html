@@ -89,9 +89,9 @@
 	    	<div class="col-md-12" id="dash-btns">
 
 				<div class="dash-btn-container">
-		    		<button id="interview-btn">create interview post</button>
+		    		<button data-toggle="modal" data-target="#post-interview-modal" id="interview-btn">create interview post</button>
 	
-		    		<button id="studyguide-btn">create study guide post</button>
+		    		<button data-toggle="modal"  data-target="#study-guide-modal" id="studyguide-btn">create study guide post</button>
 
 		    		<button id="viewpost-btn">view your posts
 		    		</button>
@@ -208,6 +208,95 @@
             <div class="clear"></div>
 
     </div>
+
+
+<!-- Modal Window to Make Interview Post -->
+    <div id="post-interview-modal" class="modal">
+        <!-- Post Interview Form -->
+        <form class="modal-content" role="form">
+    
+            <span class="close" data-dismiss="modal">&times;</span>
+
+            <div class="modal-container">
+
+                <h2 class="modal-header">Share Your Interview Experience!</h2>
+                <p>Help your fellow coder bees and share your interview experience or tips below</p>
+
+                <div class="login-container">
+
+                    <label for="interview-title">Title</label>
+                    <input type="interview-title" class="form-control" id="interview-title">
+
+                    <label for="interview-position">Position</label>
+                    <input type="interview-position" class="form-control" id="interview-position" required>
+
+                    <label for="interview-body">Body</label>
+                    <textarea rows="5" class="form-control" id="interview-body" required></textarea>
+
+                    <label for="interview-city">City</label>
+                    <input type="interview-city" class="form-control" id="interview-city" required>
+
+                    <label for="interview-state">State</label>
+                    <input type="interview-state" class="form-control" id="interview-state" required>
+
+                    <label for="interview-company">Company (Optional)</label>
+                    <input type="interview-company" class="form-control" id="interview-company">
+                
+                </div>
+            
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary" id="submit-dash-interview" data-toggle="modal" data-target="#post-interview-modal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </form>
+
+        <div class="clear"></div>
+
+    </div>
+
+
+<!-- Modal Window to Make Study Guide Post -->
+    <div id="study-guide-modal" class="modal">
+        <!-- Study Guide Form -->
+        <form class="modal-content" role="form">
+    
+            <span class="close" data-dismiss="modal">&times;</span>
+
+            <div class="modal-container">
+
+                <h2 class="modal-header">Share Your Coding Tips!</h2>
+                <p>Share your wealth of knowledge and help your fellow coder bees with "need-to-know" coding tips and topics that are a must in this industry!</p>
+
+                <div class="login-container">
+
+                    <label for="guide-title">Title</label>
+                    <input type="guide-title" class="form-control" id="guide-title" required>
+
+                    <label for="guide-body">Body</label>
+                    <textarea rows="5" class="form-control" id="guide-body" required></textarea>
+
+                    <label for="guide-tag">Tag</label>
+                    <input type="guide-tag" class="form-control" id="guide-tag" required>
+                
+                </div>
+            
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary" id="submit-dash-post" data-toggle="modal" data-target="#study-guide-modal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </form>
+
+        <div class="clear"></div>
+
+    </div>
+
+
 
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/logic.js"></script>
