@@ -561,15 +561,15 @@ nav ul {
 /* ---------- INTERVIEW BODY CSS ---------- */
 
 
-.interview-wrapper {
+.interview-wrapper  {
     height: 100%;
 }
 
-.interview-panel {
+.interview-panel, .studyguide-panel {
 	margin: 50px 5px 5px 50px;
 }
 
-.interview-search-wrapper {
+.interview-search-wrapper, .studyguide-search-wrapper {
 	margin-top: 100px;
 }
 

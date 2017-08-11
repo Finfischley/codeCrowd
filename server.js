@@ -47,7 +47,10 @@ app.use(expressJWT({
 	 // interviewstuff.html css
 	 '/assets/css/interview-modal.css',
 	 // interviewstuff.html js
-	 '/assets/js/interview-modal.js'
+	 '/assets/js/interview-modal.js',
+	 // studyguide.html css, js
+	 "/assets/css/studyguide-modal.css", "/assets/js/studyguide-modal.js"
+	
 	 // routes you need to take away afterwards
 	 //'/dashboard'
 	 ]

@@ -365,5 +365,89 @@ $(document).ready(function(){
         });
     }
 
+    // ---------- STUDY-GUIDE LOGIN/SIGNUP ---------- //
+    $("#study-login-btn").on("click", studyLogIn);
+    $("#study-signup-btn").on("click", studySignUp);
+
+    function studyLogIn(event){
+        event.preventDefault();
+    
+        // Grab user input
+        var studyUsername = $("#study-login-username").val().trim();
+        var studyPassword = $("#study-login-password").val().trim();
+
+        // For validation purposes, no empty fields
+        if (studyUsername === ""|| studyPassword === ""){
+            // alert("not valid");
+            return;
+        }
+
+        // Checks if the username and password match 
+        $.ajax({
+            method: "GET",
+            url: "/login",
+            data: {
+                username: studyUsername,
+                password: studyPassword
+            }
+        }).done(function(data){
+            // If a match isn't found, then redirect to homepage
+            if (data === 'invalid credentials'){
+                window.location.href = "/";
+                return;
+            }
+            
+            // If a match is found, then set user's information to local storage
+            // This is so validation can be persitent across pages
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userFirstName", data.firstname);
+            localStorage.setItem("userId", data.userID);
+            localStorage.setItem("username", data.username);
+
+            // Redirect to the dashboard with JSON Web Token
+            window.location.href = "/dashboard?token=" + data.token;
+            
+            // dynamically add/change navlink
+            loggedIn = true;
+
+            loggedUser = localStorage.getItem("userFirstName");
+
+            dynamicLink(loggedIn, loggedUser);
+
+        });
+    }
+
+    function studySignUp(event){
+        event.preventDefault();
+
+        // Grab user input
+        var new_first_name = $("#study-signup-fname").val().trim();
+        var new_last_name = $("#study-signup-lname").val().trim();
+        var new_username = $("#study-signup-username").val().trim();
+        var new_password = $("#study-signup-password").val().trim();
+
+        // For validation purposes, no empty fields
+        if (new_first_name === "" || new_last_name === "" || new_username === ""
+            || new_password === ""){
+            // alert("missing info");
+            return;
+        }
+
+        var new_user = {
+            first_name: new_first_name,
+            last_name: new_last_name,
+            username: new_username,
+            password: new_password
+        };
+
+        // Adds user to the database and then redirects to the homepage
+        $.post("/newuser", new_user, function(){
+            window.location.href = "/";
+        });
+    }
+
 
 });
+
+
+// });
