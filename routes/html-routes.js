@@ -14,7 +14,7 @@ module.exports = function(app){
 
 	// Study-guide posts
 	app.get("/study-guide", function(req, res){
-		res.sendFile(path.join(__dirname, "../public/views/study-guide.html"));
+		res.sendFile(path.join(__dirname, "../public/views/studyguide.html"));
 	});
 
 	// Interview-prep posts

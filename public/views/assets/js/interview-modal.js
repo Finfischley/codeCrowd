@@ -49,6 +49,7 @@ $.get("/api/interview-prep/posts", function(data){
 
     panel.append(panelHead);
     panel.append(panelBody);
+    panel.append(panelFoot);
 
     col.append(panel);
 
@@ -58,10 +59,9 @@ $.get("/api/interview-prep/posts", function(data){
 
   }
 
-  // this is where we dynamically add the content to the page
 });
 
-// If an user is not logged in, then button to add interivew 
+// If an user is not logged in, then the button to add interivew 
 // tips is hidden
 if (!localStorage.getItem("userId")){
   $("#intvw-btn").hide();
