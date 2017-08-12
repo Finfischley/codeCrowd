@@ -139,10 +139,11 @@ $(document).on("click", ".panel-footer .flags-div", function(event){
 $(document).on("click", ".panel-footer .likes-div", function(event){
     event.preventDefault();
 
-    var likes = $(this).text();
     var postID = $(this).attr("data");
+    var likes = $("#likes-text-" + postID).text();
     var newLikes = parseInt(likes) + 1;
 
+    // console.log(this);
     // console.log(likes);
     // console.log(postID);
     // console.log(newLikes);

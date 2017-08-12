@@ -124,7 +124,7 @@ $.get("/api/interview-prep/posts", function(data){
 
     title.text(data[i].position.toUpperCase());
 
-    if (!data[i].company.toUpperCase()) {
+    if (!data[i].company) {
       panelHead.append(title);
     } else {
       title.append(" at " + data[i].company.toUpperCase());
