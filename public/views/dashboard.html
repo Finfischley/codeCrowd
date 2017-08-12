@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Dashboard</title>
+	<title>Code Hive - Dashboard</title>
 
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,8 +34,8 @@
 
 <body>
 	
-	<!-- NAVIGATION BAR -->
-            <!-- Navigation -->
+	<!-- *************** NAVIGATION BAR *************** -->
+    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top menu" role="navigation">
         <div class="container" id="navbar-container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -77,18 +77,16 @@
 				<div class="trim">
 					<img id="hivehexbg" src="./assets/images/hivehex.png">	
 				</div>
-
 				<h2 id="dash-username">username</h2>
 
-			</div>
+			</div> <!-- end dashboard header -->
 
-		</div>
+		</div> <!-- end row 1 -->
 
 		<div class="row">
 
 			<!-- DASHBOARD BUTTONS: interview prep  & studt guide -->
 	    	<div class="col-md-12" id="dash-btns">
-
 				<div class="dash-btn-container">
 		    		<button data-toggle="modal" data-target="#post-interview-modal" id="interview-btn">create interview post</button>
 	
@@ -99,47 +97,44 @@
 
 		    		<button id="logout-btn">log out</button>
 		    	</div>
-
 	    	</div>
 
-		</div>
+		</div> <!-- end row 2 -->
 
-    </div>
+    </div> <!-- end dash container -->
 
-    <!-- User's Post Modal Window -->
+    <!-- *************** USER'S POST MODAL *************** -->
 
     <!-- DASHBOARD USER'S POSTS: display most recent first to be dynamically added in -->
 
     <div id="post-modal" class="scroll-modal">
-
     	<div class="animate" id="post-content">
 
 			<h2>Your Posts</h2>
-
     		<span class="close-post">&times;</span>
-
 			<div id="posts-go-here">
 				<!-- actual posts go into this div -->
-				<!-- each post will be in its own individual div -->
-				
+				<!-- each post will be in its own individual div -->		
 			</div>
 
+            <!-- close the modal -->
     		<div class="btn-container">
     			<button type="button" id="close-btn">close</button>
     		</div>
-    	</div>
-    	
-    </div>
+    	</div> <!-- end post content -->
+    </div> <!-- end post modal -->
 
-	<!-- Login/Register Modal Window -->
+	<!-- *************** LOGIN/SIGNUP MODAL *************** -->
+
     <div id="user-modal" class="modal">
-        <!-- Login Form -->
+
+        <!-- *************** LOGIN FORM *************** -->
             <form class="animate modal-content" id="login-content">
 
                 <span class="close">&times;</span>
 
+                <!-- Main Login Form -->
                 <div class="modal-container">
-
                     <img id="modal-img" src="./assets/images/goldenhex.png"/>
                     <h2 class="modal-header">BUZZ IN</h2>
 
@@ -154,11 +149,13 @@
                     </div>
                 </div>
 
+                <!-- Login/Cancel Buttons -->
                 <div class="btn-container">
                     <button type="submit" id="dashboard-login-btn">buzz in</button>
                     <button type="button" class="cancel-btn">cancel</button>
                 </div>
-
+                
+                <!-- Signup Alternative -->
                 <div class="alt-container">
                     <span>
                         <a class="alt-signup" href="#">Sign Up For Code Hive</a>
@@ -166,13 +163,13 @@
                 </div>
             </form>
 
-        <!-- Signup Form-->
+        <!-- *************** Signup Form ***************-->
             <form class="animate modal-content" id="signup-content">
 
                 <span class="close">&times;</span>
 
+                <!-- Main Signup Form -->
                 <div class="modal-container">
-
                     <img id="modal-img" src="./assets/images/goldenhex.png"/>
                     <h2 class="modal-header">WELCOME, NEW BEE!</h2>
 
@@ -194,11 +191,13 @@
 
                 </div>
 
+                <!-- Signup/Cancel Buttons -->
                 <div class="btn-container">
                     <button type="submit" id="dashboard-signup-btn">sign up</button>
                     <button type="button" class="cancel-btn">cancel</button>
                 </div>
 
+                <!-- Login Alternative -->
                 <div class="alt-container">
                     <span>
                         <a class="alt-login" href="#">Buzz In to Code Hive</a>
@@ -207,9 +206,9 @@
             </form>
 
             <div class="clear"></div>
-
     </div>
 
+<!-- ******* INTERVIEW + STUDY GUIDE MODALS ******* -->
 
 <!-- Modal Window to Make Interview Post -->
     <div id="post-interview-modal" class="modal">
@@ -218,6 +217,7 @@
     
             <span class="close" data-dismiss="modal">&times;</span>
 
+            <!-- Main Form -->
             <div class="modal-container">
 
                 <h2 class="modal-header">Share Your Interview Experience!</h2>
@@ -246,7 +246,8 @@
                 </div>
             
             </div>
-
+            
+            <!-- Submit/Close Buttons -->
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary" id="submit-dash-interview" data-toggle="modal" data-target="#post-interview-modal">Submit</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -255,8 +256,7 @@
         </form>
 
         <div class="clear"></div>
-
-    </div>
+    </div> <!-- end interview post modal -->
 
 
 <!-- Modal Window to Make Study Guide Post -->
@@ -266,8 +266,8 @@
     
             <span class="close" data-dismiss="modal">&times;</span>
 
+            <!-- Main Form -->
             <div class="modal-container">
-
                 <h2 class="modal-header">Share Your Coding Tips!</h2>
                 <p>Share your wealth of knowledge and help your fellow coder bees with "need-to-know" coding tips and topics that are a must in this industry!</p>
 
@@ -283,21 +283,18 @@
                     <input type="guide-tag" class="form-control" id="guide-tag" required>
                 
                 </div>
-            
             </div>
-
+            
+            <!-- Submit/Close Buttons -->
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary" id="submit-dash-post" data-toggle="modal" data-target="#study-guide-modal">Submit</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-
         </form>
-
         <div class="clear"></div>
+    </div> <!-- end study guide post modal -->
 
-    </div>
-
-
+    <!-- *************** JAVASCRIPT *************** -->
 
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/logic.js"></script>
