@@ -262,7 +262,7 @@ $("#search-positions").on("click", function(event){
 
       title.text(data[j].position.toUpperCase());
 
-      if (!data[j].company.toUpperCase()) {
+      if (!data[j].company) {
         panelHead.append(title);
       } else {
         title.append(" at " + data[j].company.toUpperCase());
