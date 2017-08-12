@@ -27,6 +27,7 @@
 			* login/signup modal
 			* study guide modal
 			* interview modal
+			* user post modal
 */
 
 /* ---------------------------------------------------------- */
@@ -621,10 +622,6 @@ nav ul {
 	width:100%;
 }
 
-#posts-go-here {
-
-}
-
 /* ---------- INTERVIEW & STUDY GUIDE BODY ---------- */
 
 .interview-panel, .studyguide-panel {
@@ -813,4 +810,12 @@ div .likes-div div {
 		margin-left:0;
 		margin-right:0;
 	}
+}
+
+/* *** USER POST MODAL *** */
+
+@media screen and (max-width:992px) {
+	#post-modal {
+		margin-top:5%;
+	}	
 }
