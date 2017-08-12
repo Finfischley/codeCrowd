@@ -105,7 +105,7 @@ $.get("/api/interview-prep/posts", function(data){
 
     row.addClass("row");
 
-    col.addClass("col-md-10");
+    col.addClass("col-md-12");
 
     col.attr("id", "post-text-" + uniquePostID);
 

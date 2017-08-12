@@ -45,7 +45,7 @@ $.get("/api/study-guide/read/posts", function(data){
 
         row.addClass("row");
 
-        col.addClass("col-md-10");
+        col.addClass("col-md-12");
 
         col.attr("id", "post-text-" + uniquePostID);
 
@@ -218,7 +218,7 @@ $("#search-positions").on("click", function(event){
 
             row.addClass("row");
 
-            col.addClass("col-md-10");
+            col.addClass("col-md-12");
 
             col.attr("id", "post-text-" + uniquePostID);
 
