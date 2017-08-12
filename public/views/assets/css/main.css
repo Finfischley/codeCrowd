@@ -771,10 +771,40 @@ div .likes-div div {
 	}
 }
 
+@media screen and (min-width:502px) and (max-width: 771px) {
+
+	.modal {
+		left:5%;
+		margin:0 auto;
+	}
+
+	#study-guide-modal form.modal-content {
+		width:400px;
+		padding:20px;
+		margin-left:2%;
+		margin-right:0;
+	}
+}
+
 /* *** INTERVIEW MODAL *** */
 @media screen and (max-width:501px) {
 	.modal {
 		left:0%;
+	}
+
+	#post-interview-modal form.modal-content {
+		width:400px;
+		padding:20px;
+		margin-left:0;
+		margin-right:0;
+	}
+}
+
+@media screen and (min-width:502px) and (max-width: 771px) {
+
+	.modal {
+		left:5%;
+		margin:0 auto;
 	}
 
 	#post-interview-modal form.modal-content {
