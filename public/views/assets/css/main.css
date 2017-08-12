@@ -679,6 +679,13 @@ a.read-more:hover {
 	font-weight: bold;
 }
 
+/* *** INTERVIEW & STUDY GUIDE MEDIA QUERIES *** */
+@media screen and (max-width:614px) {
+	#study-guide-results, #interview-results {
+		width:400px;
+	}
+}
+
 /* ---------- LIKES, FLAGS, AND TAGS --------- */
 .panel-footer {
 height:50px;
