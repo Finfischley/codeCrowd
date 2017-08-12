@@ -1,9 +1,8 @@
 /* CodeHive: Javascript for Study Guide Posts.
-1. Grabs posts from the database for the study-guide page. 
+1. Grabs and displays posts from the database for the study-guide page. 
 2. Gets data from user input and sends it to the database.
 3. Keeps track of the likes and flags for study guide posts.
-4. Keeps track of the flags for the Study Guide Posts.
-
+4. Get search query from user to search posts by tag.
 */
 
 $(document).ready(function() {
