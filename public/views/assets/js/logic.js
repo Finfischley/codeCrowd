@@ -19,11 +19,10 @@ $(document).ready(function(){
 			},
 			headers: {Authorization: "Bearer " + localStorage.getItem("token")}
 		}).done(function(data){
-			console.log(data);
+			
+			$("#posts-go-here").empty();
 
 			for (var j = 0; j < data.length; j++){
-
-				$("#posts-go-here").empty();
 
 				var div = $("<div>");
 
