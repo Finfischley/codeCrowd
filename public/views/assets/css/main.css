@@ -818,4 +818,8 @@ div .likes-div div {
 	#post-modal {
 		margin-top:5%;
 	}	
+
+	#posts-go-here .row .col-md-10 {
+		margin-top:5%;
+	}
 }
