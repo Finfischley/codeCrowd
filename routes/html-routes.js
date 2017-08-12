@@ -19,7 +19,7 @@ module.exports = function(app){
 
 	// Interview-prep posts
 	app.get("/interview-prep", function(req, res){
-		res.sendFile(path.join(__dirname, "../public/views/interviewstuff.html"));
+		res.sendFile(path.join(__dirname, "../public/views/interview-prep.html"));
 	});
 
 	// dashboard
