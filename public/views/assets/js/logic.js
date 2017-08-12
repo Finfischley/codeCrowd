@@ -144,9 +144,9 @@ $(document).ready(function(){
     	}
 
 	    var newPost = {
-	        title: $("#guide-title").val().trim(),
+	        title: $("#guide-title").val().trim().toLowerCase(),
 	        content: $("#guide-body").val().trim(),
-	        tag: $("#guide-tag").val().trim()
+	        tag: $("#guide-tag").val().trim().toLowerCase()
 	    };
 
     	console.log(newPost);

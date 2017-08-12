@@ -51,7 +51,9 @@ app.use(expressJWT({
 	 // studyguide.html css, js
 	 '/assets/css/studyguide-modal.css', '/assets/js/studyguide-modal.js',
 	// team html, css, js
-	'/assets/css/team.css'
+	'/assets/css/team.css',
+	// code hive logo
+	'/assets/images/codehive-logo.png'
 	 // routes you need to take away afterwards
 	 //'/dashboard'
 	 ]
