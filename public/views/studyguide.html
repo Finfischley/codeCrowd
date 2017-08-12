@@ -26,10 +26,6 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
-     <!-- Modal CSS -->
-<!--     <link rel="stylesheet" type="text/css" href="assets/css/studyguide-modal.css">
- -->
-
 </head>
 
 <body class="fill">
@@ -67,6 +63,9 @@
         <!-- /.container -->
     </nav>
 
+        <!-- STUDY GUIDE SEARCH BAR AND POST BUTTON -->
+        <!-- Search bar for searching posts using coding and study guide keywords and topics. The post button will allow user to add to the library of study guide posts with their own tips. -->
+
         <div class="studyguide-search-wrapper container">
 
             <div class="container">
@@ -84,14 +83,58 @@
             </div><!-- /container -->
         </div>
 
-        <!-- Study Guide Posts -->
+        <!-- STUDY GUIDE POSTS DISPLAY -->
+        <!-- This div dynamically displays all the study guide posts from our database. -->
         <div class="studyguide-panel container" id="study-guide-results">
         </div>
 
 
-        <!-- Login/Register Modal Window -->
+
+<!-- POST STUDY GUIDE MODAL WINDOW -->
+<!-- Modal window with a form for the user to post and share coding tips and study guide topics. -->
+
+    <div id="study-guide-modal" class="modal">
+        <!-- Study Guide Form -->
+        <form class="modal-content" role="form">
+    
+            <span class="close" data-dismiss="modal">&times;</span>
+
+            <div class="modal-container">
+
+                <h2 class="modal-header">Share Your Coding Tips!</h2>
+                <p>Share your wealth of knowledge and help your fellow coder bees with "need-to-know" coding tips and topics that are a must in this industry!</p>
+
+                <div class="login-container">
+
+                    <label for="guide-title">Title</label>
+                    <input type="guide-title" class="form-control" id="guide-title" required>
+
+                    <label for="guide-body">Body</label>
+                    <textarea rows="5" class="form-control" id="guide-body" required></textarea>
+
+                    <label for="guide-tag">Tag</label>
+                    <input type="guide-tag" class="form-control" id="guide-tag" required>
+                
+                </div>
+            
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary" id="submit-post" data-toggle="modal" data-target="#study-guide-modal">Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </form>
+
+        <div class="clear"></div>
+
+    </div>
+
+
+    <!-- LOGIN/REGISTER MODAL WINDOW -->
     <div id="user-modal" class="modal">
         <!-- Login Form -->
+        <!-- This modal window defaults to show the login form so a user can login. -->
             <form class="animate modal-content" id="login-content">
 
                 <span class="close">&times;</span>
@@ -116,7 +159,8 @@
                     <button type="submit" id="study-login-btn">buzz in</button>
                     <button type="button" id="cancel-btn">cancel</button>
                 </div>
-
+                
+                <!-- If a user is not yet signed up for CodeHive, they can click this link to go to an alternate form to sign up. -->
                 <div class="alt-container">
                     <span>
                         <a class="alt-signup" href="#">Sign Up For Code Hive</a>
@@ -125,6 +169,7 @@
             </form>
 
         <!-- Signup Form-->
+        <!-- This signup form will allow the user to register as a new user. -->
             <form class="animate modal-content" id="signup-content">
 
                 <span class="close">&times;</span>
@@ -168,61 +213,10 @@
 
     </div>
 
-<!-- Modal Window to Make Study Guide Post -->
-    <div id="study-guide-modal" class="modal">
-        <!-- Study Guide Form -->
-        <form class="modal-content" role="form">
-    
-            <span class="close" data-dismiss="modal">&times;</span>
-
-            <div class="modal-container">
-
-                <h2 class="modal-header">Share Your Coding Tips!</h2>
-                <p>Share your wealth of knowledge and help your fellow coder bees with "need-to-know" coding tips and topics that are a must in this industry!</p>
-
-                <div class="login-container">
-
-                    <label for="guide-title">Title</label>
-                    <input type="guide-title" class="form-control" id="guide-title" required>
-
-                    <label for="guide-body">Body</label>
-                    <textarea rows="5" class="form-control" id="guide-body" required></textarea>
-
-                    <label for="guide-tag">Tag</label>
-                    <input type="guide-tag" class="form-control" id="guide-tag" required>
-                
-                </div>
-            
-            </div>
-
-            <div class="btn-container">
-                <button type="submit" class="btn btn-primary" id="submit-post" data-toggle="modal" data-target="#study-guide-modal">Submit</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-
-        </form>
-
-        <div class="clear"></div>
-
-    </div>
-
 
 
     <script type="text/javascript" src="assets/js/studyguide-modal.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-    <!-- <script type="text/javascript" src="assets/js/style.js"></script> -->
 
 </body>
 </html>
-
-
-<!-- title
-content
-city
-state
-position
-company (optional) -->
-
-<!--TITLE
-CONTENT
-TAG -->

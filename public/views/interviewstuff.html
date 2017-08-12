@@ -25,10 +25,6 @@
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
-	  <!-- Modal CSS -->
-<!--     <link rel="stylesheet" type="text/css" href="assets/css/interview-modal.css">
- -->
  
 </head>
 
@@ -67,7 +63,8 @@
         <!-- /.container -->
     </nav>
 
-        <!--Search Bar and Post Button -->
+        <!-- INTERVIEW SEARCH BAR AND POST BUTTON -->
+        <!-- Search bar for searching interview posts. The post button is used to bring up the modal window to post your own interview experience. Will only show if the user is logged in. -->
 
         <div class="interview-search-wrapper container">
 
@@ -85,7 +82,8 @@
                 </div><!-- /row -->
             </div><!-- /container -->
 
-            <!-- Interview Posts -->
+            <!-- INTERVIEW POSTS DISPLAY -->
+            <!-- This div dynamically displays all the interview posts from our database. -->
             <div class="interview-panel" id="interview-results">
 
 <!-- CONTENT BELOW HERE SHOULD BE DELETED. -->
@@ -156,7 +154,9 @@
         </div><!-- /interview-search-wrapper -->
 
 
-<!-- Modal Window to Make Interview Post -->
+<!-- POST INTERVIEW MODAL WINDOW -->
+<!-- Modal window with a form for the user to post and share their own interview experience. Will only display for users who are logged in. -->
+
     <div id="post-interview-modal" class="modal">
         <!-- Post Interview Form -->
         <form class="modal-content" role="form">
@@ -204,12 +204,10 @@
     </div>
 
 
-
-
-
-        <!-- Login/Register Modal Window -->
+    <!-- LOGIN/REGISTER MODAL WINDOW -->
     <div id="user-modal" class="modal">
         <!-- Login Form -->
+        <!-- This modal window defaults to show the login form so a user can login. -->
             <form class="animate modal-content" id="login-content">
 
                 <span class="close">&times;</span>
@@ -235,6 +233,7 @@
                     <button type="button" class="intprep-btn">cancel</button>
                 </div>
 
+                <!-- If a user is not yet signed up for CodeHive, they can click this link to go to an alternate form to sign up. -->
                 <div class="alt-container">
                     <span>
                         <a class="alt-signup" href="#">Sign Up For Code Hive</a>
@@ -243,6 +242,7 @@
             </form>
 
         <!-- Signup Form-->
+        <!-- This signup form will allow the user to register as a new user. -->
             <form class="animate modal-content" id="signup-content">
 
                 <span class="close">&times;</span>
@@ -291,15 +291,3 @@
 
 </body>
 </html>
-
-
-<!-- title
-content
-city
-state
-position
-company (optional) -->
-
-<!--TITLE
-CONTENT
-TAG -->
