@@ -24,11 +24,11 @@ We used heroku to deploy our application. It can be seen live at [codeHive](http
 
 ## Authors ##
 
-[Jazmin Estrada](https://github.com/jazmin10)
-[Melissa Hernandez](https://github.com/misshernandez)
-[Flynn Tan](https://github.com/sundropgold)
-[Sada Kallur](https://githib.com/sadashivakj)
-[Steve Walsh](https://github.com/finfischley)
+* [Jazmin Estrada](https://github.com/jazmin10)
+* [Melissa Hernandez](https://github.com/misshernandez)
+* [Flynn Tan](https://github.com/sundropgold)
+* [Sada Kallur](https://githib.com/sadashivakj)
+* [Steve Walsh](https://github.com/finfischley)
 
 ## Acknowledgements ##
 
